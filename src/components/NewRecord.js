@@ -13,6 +13,15 @@ function NewRecord() {
     const difficultyRef = useRef()
     const { currentUser, logout, userData } = useAuth()
     const [field, setField] = useState([]);
+    const [display, setDisplay] = useState('Array')
+
+    const status = {
+      'Array':true, 
+      'Linked List':true, 
+      'Dynamic Programming':true, 
+      'Trie':true, 
+      'Graph':true, 
+      'Tree':true}
 
     useEffect(()=>{
       console.log('')
@@ -36,9 +45,22 @@ function NewRecord() {
           })
       }
 
+      async function handleChange(e){
+       
+        const types = Object.keys(status)
+
+        const selectOption = e.target.value
+
+        setDisplay(selectOption)
+        status[display]=false
+      
+    }
+    
+
     return (
         <>
-        <Card>
+        <div className='d-flex justify-content-start'>
+        <Card >
           <Card.Body>
          
             <h2 className="text-center mb-4">Create New Record</h2>
@@ -55,7 +77,7 @@ function NewRecord() {
                     <option>Nay</option>
                 </Form.Control>
               </Form.Group>
-              <Form.Group id="qType">
+              <Form.Group id="qType" onChange={handleChange}>
                 <Form.Label>Problem Type</Form.Label>
                 <Form.Control as="select" ref={qTypeRef} single>
                     <option>Array</option>
@@ -69,25 +91,25 @@ function NewRecord() {
               <Form.Group id="qTechnique">
                 <Form.Label>Technique Used</Form.Label>
                 <Form.Control as="select" ref={qTechRef} single>
-                    <option value="Array Binary Search">Array Binary Search</option>
-                    <option value="Pointers">Pointers</option>
-                    <option value="String">String</option>
-                    <option value="Array Hash Table">Array Hash Table</option>
-                    <option value="Stack/Queue">Stack/Queue</option>
-                    <option value="BST">BST</option>
-                    <option value="Tree BFS">Tree BFS</option>
-                    <option value="Tree DFS">Tree DFS</option>
-                    <option value="Tree Binary Search">Tree Binary Search</option>
-                    <option value="Heap">Heap</option>
-                    <option value="Tree Hash Table">Tree Hash Table</option>
-                    <option value="Memoization">Memoization</option>
-                    <option value="Tabulation">Tabulation</option>
-                    <option value="Graph BFS">Graph BFS</option>
-                    <option value="Graph DFS">Graph DFS</option>
-                    <option value="Graph Hash Table">Graph Hash Table</option>
-                    <option value="Singly Linked List">Singly Linked List</option>
-                    <option value="Doubly Linked List">Doubly Linked List</option>
-                    <option value="Prefix Trie">Prefix Trie</option>
+                    <option value="Array Binary Search" disabled={status["Array"]}>Array Binary Search</option>
+                    <option value="Pointers" disabled={status["Array"]}>Pointers</option>
+                    <option value="String" disabled={status["Array"]}>String</option>
+                    <option value="Array Hash Table" disabled={status["Array"]}>Array Hash Table</option>
+                    <option value="Stack/Queue" disabled={status["Array"]}>Stack/Queue</option>
+                    <option value="BST" disabled={status['Tree']}>BST</option>
+                    <option value="Tree BFS" disabled={status['Tree']}>Tree BFS</option>
+                    <option value="Tree DFS" disabled={status['Tree']}>Tree DFS</option>
+                    <option value="Tree Binary Search" disabled={status['Tree']}>Tree Binary Search</option>
+                    <option value="Heap" disabled={status['Tree']}>Heap</option>
+                    <option value="Tree Hash Table" disabled={status['Tree']}>Tree Hash Table</option>
+                    <option value="Memoization" disabled={status['Dynamic Programming']}>Memoization</option>
+                    <option value="Tabulation" disabled={status['Dynamic Programming']}>Tabulation</option>
+                    <option value="Graph BFS" disabled={status['Graph']}>Graph BFS</option>
+                    <option value="Graph DFS" disabled={status['Graph']}>Graph DFS</option>
+                    <option value="Graph Hash Table" disabled={status['Graph']}>Graph Hash Table</option>
+                    <option value="Singly Linked List" disabled={status['Linked List']}>Singly Linked List</option>
+                    <option value="Doubly Linked List" disabled={status['Linked List']}>Doubly Linked List</option>
+                    <option value="Prefix Trie" disabled={status['Trie']}>Prefix Trie</option>
                 </Form.Control>
               </Form.Group>
               <Form.Group id="difficulty">
@@ -105,7 +127,9 @@ function NewRecord() {
             </Form>
           </Card.Body>
         </Card>
-        <Chart /></>
+        <Chart />
+        </div>
+        </>
     )
 }
 

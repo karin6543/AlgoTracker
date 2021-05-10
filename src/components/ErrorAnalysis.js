@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Form, Button, Card, Alert, DropdownMenu, DropdownItem} from "react-bootstrap"
 import { Link, useHistory } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext"
@@ -14,6 +14,7 @@ function ErrorAnalysis() {
     const platformRef = useRef()
     const { currentUser } = useAuth()
 
+ 
   async function handleSubmit(e) {
     e.preventDefault()
     const date = dateRef.current.value
@@ -31,6 +32,7 @@ function ErrorAnalysis() {
   }
     return (
         <>
+        <div className='d-flex justify-content-start'>
         <Card>
           <Card.Body>
             <h2 className="text-center mb-4">Create New Record</h2>
@@ -97,7 +99,8 @@ function ErrorAnalysis() {
             </Form>
           </Card.Body>
         </Card>
-        <DonutChart /></>
+        <DonutChart />
+        </div></>
         
     )
 }

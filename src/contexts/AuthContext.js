@@ -55,7 +55,7 @@ export function AuthProvider({ children }) {
 
         db.collection('browserError').where("email", "==", user.email)
         .onSnapshot(snapshot => {
-          console.log('setting error', snapshot.docs)
+     
           setUserError(snapshot.docs)
       },(err) => {
           console.log(err.message)
