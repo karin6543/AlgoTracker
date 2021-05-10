@@ -8,6 +8,9 @@ import Login from "./Login"
 import PrivateRoute from "./PrivateRoute"
 import ForgotPassword from "./ForgotPassword"
 import UpdateProfile from "./UpdateProfile"
+import NewRecord from './NewRecord'
+import ErrorAnalysis from './ErrorAnalysis'
+import Benchmark from './Benchmark'
 
 function App() {
   return (
@@ -20,6 +23,9 @@ function App() {
           <AuthProvider>
             <Switch>
               <PrivateRoute exact path="/" component={Dashboard} />
+              <PrivateRoute exact path="/newRecord" component={NewRecord} />
+              <PrivateRoute exact path="/analyzeError" component={ErrorAnalysis} />
+              <PrivateRoute exact path="/benchmark" component={Benchmark} />
               <PrivateRoute path="/update-profile" component={UpdateProfile} />
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />

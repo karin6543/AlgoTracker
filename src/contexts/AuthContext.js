@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react"
-import { auth } from "../firebase"
+import { auth, db } from "../firebase"
 
 const AuthContext = React.createContext()
 
@@ -10,6 +10,9 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState()
   const [loading, setLoading] = useState(true)
+  const [userData, setUserData] = useState()
+  const [userError, setUserError] = useState()
+
 
   function signup(email, password) {
     return auth.createUserWithEmailAndPassword(email, password)
@@ -37,8 +40,35 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
-      setCurrentUser(user)
-      setLoading(false)
+
+      if(user){
+        setCurrentUser(user)
+        setLoading(false)
+        console.log('sign in', user)
+           db.collection('tracker').where("userId", "==", user.email)
+      .onSnapshot(snapshot => {
+        console.log('fetch success')
+        setUserData(snapshot.docs)
+    },(err) => {
+        console.log(err.message)
+        })
+
+        db.collection('browserError').where("email", "==", user.email)
+        .onSnapshot(snapshot => {
+          console.log('setting error', snapshot.docs)
+          setUserError(snapshot.docs)
+      },(err) => {
+          console.log(err.message)
+          })
+
+      }
+   
+      else{
+        console.log('sign out')
+        setCurrentUser(user)
+        setLoading(false)
+      }
+   
     })
 
     return unsubscribe
@@ -46,6 +76,8 @@ export function AuthProvider({ children }) {
 
   const value = {
     currentUser,
+    userData,
+    userError,
     login,
     signup,
     logout,
