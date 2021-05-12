@@ -11,18 +11,24 @@ import UpdateProfile from "./UpdateProfile"
 import NewRecord from './NewRecord'
 import ErrorAnalysis from './ErrorAnalysis'
 import Benchmark from './Benchmark'
+import Google from './Google'
+
 
 function App() {
   return (
+
     <Container
       className="d-flex align-items-center justify-content-center"
       style={{ minHeight: "100vh" }}
     >
       <div >
         <Router>
+     
           <AuthProvider>
+          <Dashboard />
             <Switch>
-              <PrivateRoute exact path="/" component={Dashboard} />
+            
+              <PrivateRoute exact path="/" component={NewRecord} />
               <PrivateRoute exact path="/newRecord" component={NewRecord} />
               <PrivateRoute exact path="/analyzeError" component={ErrorAnalysis} />
               <PrivateRoute exact path="/benchmark" component={Benchmark} />
@@ -30,11 +36,13 @@ function App() {
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />
               <Route path="/forgot-password" component={ForgotPassword} />
+              <Route path="/google" component={Google} />
             </Switch>
           </AuthProvider>
         </Router>
       </div>
     </Container>
+   
   )
 }
 

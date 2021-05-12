@@ -1,4 +1,4 @@
-import React, { Component, useRef, useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useAuth } from "../contexts/AuthContext"
 import * as d3 from "d3";
 
@@ -6,7 +6,7 @@ import * as d3 from "d3";
 
 
 function Chart() {
-    const { currentUser, logout, userData } = useAuth()
+    const { logout, userData } = useAuth()
     useEffect(()=>{
       console.log('CHART activate')
       if(userData){
@@ -275,7 +275,9 @@ function Chart() {
                 .attr('height', function (d) { return d.y1 - d.y0; })
                 .style("stroke", "black")
                 .style("fill", function(d){ 
-                  return color(d.parent.data.name)} )
+                  if(d.parent){
+                    return color(d.parent.data.name)
+                  }} )
                 .style("opacity", function(d){ return opacity(d.data.value)})
     
                 svg
@@ -307,7 +309,7 @@ function Chart() {
     
                   svg
                   .selectAll("titles")
-                  .data(root.descendants().filter(function(d){return d.depth==1}))
+                  .data(root.descendants().filter(function(d){return d.depth===1}))
                   .enter()
                   .append("text")
                     .attr("x", function(d){ return d.x0})
@@ -329,6 +331,7 @@ function Chart() {
 
     return (
       <div>
+               <h1>Daily Pass / Fail Distribution</h1>
          <div id='my_dataviz' className="text-center mb-4">
 
         </div>

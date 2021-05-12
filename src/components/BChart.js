@@ -1,8 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react'
-import { Form, Button, Card, Alert, DropdownMenu, DropdownItem} from "react-bootstrap"
-import { Link, useHistory } from "react-router-dom"
+import React, { useEffect } from 'react'
 import { useAuth } from "../contexts/AuthContext"
-import { auth} from "../firebase"
 import * as d3 from "d3";
 const leetcode_data = 
 [

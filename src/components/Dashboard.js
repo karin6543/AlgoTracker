@@ -1,11 +1,68 @@
 import React, { useState } from "react"
 import { Card, Button, Alert } from "react-bootstrap"
+import { FaBars } from 'react-icons/fa';
 import { useAuth } from "../contexts/AuthContext"
-import { Link, useHistory } from "react-router-dom"
+import { NavLink as Link, useHistory, BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import styled from 'styled-components';
 import firebase from "firebase/app"
 import Chart from "./Chart"
 import NewRecord from "./NewRecord"
+import { AuthProvider } from "../contexts/AuthContext"
+import PrivateRoute from "./PrivateRoute"
+import UpdateProfile from "./UpdateProfile"
+import ErrorAnalysis from './ErrorAnalysis'
+import Benchmark from './Benchmark'
+import Google from './Google'
+
+
 const db = firebase.firestore();
+
+
+export const Nav = styled.nav`
+  background:rgba(0, 0, 0, 0);
+  height: 85px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.2rem calc((100vw - 1000px) / 2);
+  z-index: 12;
+  
+`;
+
+export const NavLink = styled(Link)`
+  color: #808080;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 1rem;
+  height: 100%;
+  cursor: pointer;
+  &.active {
+    color: #fdef1d;
+  }
+`;
+
+export const Bars = styled(FaBars)`
+  display: none;
+  color: #808080;
+  @media screen and (max-width: 768px) {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-100%, 75%);
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+`;
+
+export const NavMenu = styled.div`
+  display: flex;
+  align-items: center;
+  margin-right: -24px;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
 
 export default function Dashboard() {
   const [error, setError] = useState("")
@@ -22,27 +79,27 @@ export default function Dashboard() {
       setError("Failed to log out")
     }
   }
-  let placeholder = null
-  userData? placeholder=userData[0].data() : placeholder=null
 
   return (
     <>
-      <Card>
-        <Card.Body>
-          <h2 className="text-center mb-4">Profile</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <strong>Email:</strong> {currentUser.email}
-          <li><Link to='/newRecord'>Create New</Link></li>
-          <li><Link to='/analyzeError'>Analyze Error</Link></li>
-          <li><Link to='/benchmark'>Benchmark</Link></li>
-        </Card.Body>
-      </Card>
-      <div className="w-100 text-center mt-2">
+
+      <Nav>
+      <Bars />
+      <NavMenu>
+          <NavLink to='/newRecord' >Create New</NavLink>
+          <NavLink to='/analyzeError' >Analyze Error</NavLink>
+          <NavLink to='/benchmark' >Benchmark</NavLink>
+          <div className="w-100 text-center mt-2">
         <Button variant="link" onClick={handleLogout}>
           Log Out
         </Button>
   
-      </div>
-    </>
+      </div> 
+          </NavMenu>
+      </Nav>
+  
+
+ 
+      </>
   )
 }

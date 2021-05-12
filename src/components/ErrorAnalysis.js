@@ -1,16 +1,15 @@
-import React, { useRef, useState, useEffect } from 'react'
-import { Form, Button, Card, Alert, DropdownMenu, DropdownItem} from "react-bootstrap"
-import { Link, useHistory } from "react-router-dom"
+import React, { useRef } from 'react'
+import { Form, Button, Card} from "react-bootstrap"
+import { Link } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext"
-import { auth, db } from "../firebase"
+import { db } from "../firebase"
 import DonutChart from './DonutChart'
+
 
 function ErrorAnalysis() {
   const dateRef = useRef()
-    const qTypeRef = useRef()
     const qTechRef = useRef()
     const errorRef = useRef()
-    const difficultyRef = useRef()
     const platformRef = useRef()
     const { currentUser } = useAuth()
 
@@ -19,7 +18,6 @@ function ErrorAnalysis() {
     e.preventDefault()
     const date = dateRef.current.value
     const error = errorRef.current.value 
-    const qTechnique = qTechRef.current.value
     const source = platformRef.current.value
     console.log('your err', error)
     db.collection('browserError').add({
@@ -32,6 +30,7 @@ function ErrorAnalysis() {
   }
     return (
         <>
+
         <div className='d-flex justify-content-start'>
         <Card>
           <Card.Body>

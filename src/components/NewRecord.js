@@ -4,6 +4,7 @@ import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import { auth, db } from "../firebase"
 import Chart from "./Chart"
+import Dashboard from "./Dashboard"
 
 function NewRecord() {
     const dateRef = useRef()
@@ -34,7 +35,7 @@ function NewRecord() {
         const pass = passRef.current.value 
         const qType = qTypeRef.current.value
         const qTechnique = qTechRef.current.value
-        console.log('here', [date, difficulty, pass, qType])
+    
         db.collection('tracker').add({
             date: date,
             userId: currentUser.email,
@@ -52,17 +53,16 @@ function NewRecord() {
         const selectOption = e.target.value
 
         setDisplay(selectOption)
-        status[display]=false
-      
+     
     }
-    
-
+    status[display]=false
     return (
         <>
-        <div className='d-flex justify-content-start'>
+        <div className='d-flex justify-content-start margin: 60px'>
+     
         <Card >
           <Card.Body>
-         
+ 
             <h2 className="text-center mb-4">Create New Record</h2>
           
             <Form onSubmit={handleSubmit}>
@@ -120,14 +120,14 @@ function NewRecord() {
                     <option>Hard</option>
                     </Form.Control>
               </Form.Group>
-              <Button className="w-100" type="submit" color="warning">
+              <Button className="w-100" type="submit">
                 Create
               </Button>
               <Link to='/'>Back</Link>
             </Form>
           </Card.Body>
         </Card>
-        <Chart />
+        {userData? <Chart />: <h4>Dude, Add Your First Practice Data</h4>}
         </div>
         </>
     )

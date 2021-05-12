@@ -21,7 +21,10 @@ function Benchmark() {
   }
     return (
         <>
+                 <h4>Benchmark Your Progress</h4><br />
+      <div> 🧤User Passing Rate</div> <div> 🙂LeetCode Users Avg. Passing Rate</div> 
       <div className='d-flex justify-content-start'>
+      
         <Card>
           <Card.Body>
             <h2 className="text-center mb-4">Benchmark Your Progress</h2>
@@ -34,7 +37,7 @@ function Benchmark() {
                     <option>Hard</option>
                     </Form.Control>
               </Form.Group>
-              <Button className="w-100" type="submit">
+              <Button className="w-100" type="submit" style={{color:"#00005c", margin: "5%", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}}>
                 Filter
               </Button>
               <Button onClick={handleBack} className="w-100">Back</Button>

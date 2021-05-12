@@ -1,5 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react'
-import { Form, Button, Card, Alert, DropdownMenu, DropdownItem} from "react-bootstrap"
+import React, {useEffect } from 'react'
 import { Link, useHistory } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext"
 import { auth, db } from "../firebase"
