@@ -2,7 +2,6 @@ import firebase from "firebase/app"
 import "firebase/auth"
 import 'firebase/firestore';
 
-
 const app = firebase.initializeApp({
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -18,8 +17,11 @@ export const auth = app.auth()
 const googleProvider = new firebase.auth.GoogleAuthProvider()
 
 export const signInWithGoogle = () => {
+  
   auth.signInWithPopup(googleProvider).then((res) => {
-    console.log(res.user)
+    console.log('google signin', res.user)
+    window.location = "https://algo-tracker-dev.web.app/";
+
   }).catch((error) => {
     console.log(error.message)
   })
