@@ -1,5 +1,5 @@
 {
-  "name": "firebase-react-auth",
+  "name": "Algo-Tracker",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -24,7 +24,7 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "Algo-Tracker"
   },
   "browserslist": {
     "production": [

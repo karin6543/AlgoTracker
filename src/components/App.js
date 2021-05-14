@@ -12,7 +12,7 @@ import NewRecord from './NewRecord'
 import ErrorAnalysis from './ErrorAnalysis'
 import Benchmark from './Benchmark'
 import Google from './Google'
-
+import Test from './Test'
 
 function App() {
   return (
@@ -25,10 +25,10 @@ function App() {
         <Router>
      
           <AuthProvider>
-          <Dashboard />
-            <Switch>
-            
-              <PrivateRoute exact path="/" component={NewRecord} />
+    
+            <Switch> 
+              <PrivateRoute exact path="/test" component={Test} />
+              <PrivateRoute exact path="/" component={Dashboard} />
               <PrivateRoute exact path="/newRecord" component={NewRecord} />
               <PrivateRoute exact path="/analyzeError" component={ErrorAnalysis} />
               <PrivateRoute exact path="/benchmark" component={Benchmark} />

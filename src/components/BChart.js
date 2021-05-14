@@ -339,7 +339,7 @@ var svg = d3.select("#benchmarkContainer")
   }
     }, [diff]);    
     return (
-        <div id="benchmarkContainer">
+        <div id="benchmarkContainer" style={{margin: '0px 20px'}} >
             
         </div>
     )

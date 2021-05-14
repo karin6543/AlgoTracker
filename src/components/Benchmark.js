@@ -1,6 +1,6 @@
-import React, { useRef, useState, useEffect } from 'react'
-import { Form, Button, Card, Alert, DropdownMenu, DropdownItem} from "react-bootstrap"
-import { Link, useHistory } from "react-router-dom"
+import React, { useRef, useState } from 'react'
+import { Form, Button, Card} from "react-bootstrap"
+import {useHistory } from "react-router-dom"
 import BChart from './BChart'
 
 function Benchmark() {

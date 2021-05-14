@@ -1,32 +1,25 @@
-import React, { useState } from "react"
-import { Card, Button, Alert } from "react-bootstrap"
+import React, { useState , PropTypes} from "react"
+import { Button, Navbar } from "react-bootstrap"
 import { FaBars } from 'react-icons/fa';
 import { useAuth } from "../contexts/AuthContext"
-import { NavLink as Link, useHistory, BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { NavLink as Link, useHistory, Switch , BrowserRouter as Router} from "react-router-dom"
 import styled from 'styled-components';
-import firebase from "firebase/app"
-import Chart from "./Chart"
-import NewRecord from "./NewRecord"
-import { AuthProvider } from "../contexts/AuthContext"
-import PrivateRoute from "./PrivateRoute"
 import UpdateProfile from "./UpdateProfile"
+import NewRecord from './NewRecord'
 import ErrorAnalysis from './ErrorAnalysis'
 import Benchmark from './Benchmark'
-import Google from './Google'
+import PrivateRoute from "./PrivateRoute"
+import { AuthProvider } from "../contexts/AuthContext"
 
-
-const db = firebase.firestore();
-
-
-export const Nav = styled.nav`
-  background:rgba(0, 0, 0, 0);
-  height: 85px;
-  display: flex;
-  justify-content: space-between;
-  padding: 0.2rem calc((100vw - 1000px) / 2);
-  z-index: 12;
+// export const Nav = styled.nav`
+//   background:rgba(0, 0, 0, 0);
+//   height: 85px;
+//   display: flex;
+//   justify-content: space-between;
+//   padding: 0.2rem calc((100vw - 1000px) / 2);
+//   z-index: 12;
   
-`;
+// `;
 
 export const NavLink = styled(Link)`
   color: #808080;
@@ -82,8 +75,8 @@ export default function Dashboard() {
 
   return (
     <>
-
-      <Nav>
+    <Router>
+      <Navbar color="light" light expand="md">
       <Bars />
       <NavMenu>
           <NavLink to='/newRecord' >Create New</NavLink>
@@ -96,10 +89,19 @@ export default function Dashboard() {
   
       </div> 
           </NavMenu>
-      </Nav>
-  
+      </Navbar>
+      <AuthProvider>
+    
+            <Switch> 
+              <PrivateRoute exact path="/" component={NewRecord} />
+              <PrivateRoute exact path="/newRecord" component={NewRecord} />
+              <PrivateRoute exact path="/analyzeError" component={ErrorAnalysis} />
+              <PrivateRoute exact path="/benchmark" component={Benchmark} />
+              <PrivateRoute path="/update-profile" component={UpdateProfile} />
+            </Switch>
+          </AuthProvider>
 
- 
+          </Router>
       </>
   )
 }

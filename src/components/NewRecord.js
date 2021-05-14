@@ -1,10 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { Form, Button, Card, Alert, DropdownMenu, DropdownItem, Col} from "react-bootstrap"
+import { Form, Button, Card} from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
-import { Link, useHistory } from "react-router-dom"
-import { auth, db } from "../firebase"
+import { Link } from "react-router-dom"
+import { db } from "../firebase"
 import Chart from "./Chart"
-import Dashboard from "./Dashboard"
+
 
 function NewRecord() {
     const dateRef = useRef()
@@ -58,12 +58,12 @@ function NewRecord() {
     status[display]=false
     return (
         <>
-        <div className='d-flex justify-content-start margin: 60px'>
+        <div className='d-flex justify-content-around'>
      
-        <Card >
+        <Card>
           <Card.Body>
  
-            <h2 className="text-center mb-4">Create New Record</h2>
+            <h4 className="text-center mb-4">Create New Record</h4>
           
             <Form onSubmit={handleSubmit}>
               <Form.Group id="date">
@@ -123,11 +123,11 @@ function NewRecord() {
               <Button className="w-100" type="submit">
                 Create
               </Button>
-              <Link to='/'>Back</Link>
+        
             </Form>
           </Card.Body>
         </Card>
-        {userData? <Chart />: <h4>Dude, Add Your First Practice Data</h4>}
+        {userData? <Chart class="ml-1"/>: <h4>Dude, Add Your First Practice Data</h4>}
         </div>
         </>
     )

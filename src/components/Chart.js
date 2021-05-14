@@ -330,7 +330,7 @@ function Chart() {
     },[userData])
 
     return (
-      <div>
+      <div style={{margin: '0px 20px'}} >
                <h1>Daily Pass / Fail Distribution</h1>
          <div id='my_dataviz' className="text-center mb-4">
 
