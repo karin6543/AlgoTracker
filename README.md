@@ -19,6 +19,11 @@ Users are able to:
 - Compare practice passing rate vs. the avg. Leetcode user passing rate
 ![Image of Benchmark](https://github.com/karin6543/AlgoTracker/blob/master/public/benchmark.png)
 
+## Tech Stack
+- Front-end: React, reactstrap, styled-components
+- Backend & OAuth: Firebase Firestore
+- Deployment: Firebase Hosting
+
 In the project directory, you can run:
 
 ### `npm start`
