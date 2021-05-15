@@ -6,8 +6,7 @@ Algo Tracker is a web application designed for tracking & analyzing individual u
 
 ## Target User & Main Features
 Any data structures & algorithms learners
-
-<br/>
+<br>
 Users are able to:
 - Maintain a personal account (create an account, sign-in with Google account, and edit profile & password)
 ![Image of Login](https://github.com/karin6543/AlgoTracker/blob/master/public/login.png)
