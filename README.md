@@ -12,7 +12,7 @@ Users are able to:
 - View auto-generated visualizations that represents overall practice performance
 - Compare practice passing rate vs. the avg. Leetcode user passing rate
 
-
+![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
 
 In the project directory, you can run:
 
