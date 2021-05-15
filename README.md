@@ -12,8 +12,8 @@ Any data structures & algorithms learners
 ![Image of Login](https://github.com/karin6543/AlgoTracker/blob/master/public/login.png)
 
 - Log daily practice outcome & syntax error to the system
-- Stack Line Chart: shows daily pass/fail distribution; Red - number of problem passed; Green - number of problem failed
-- Tree Map: shows practice passing rate by problem category
+[-] Stack Line Chart: shows daily pass/fail distribution; Red - number of problem passed; Green - number of problem failed
+[-] Tree Map: shows practice passing rate by problem category
 ![Image of Dashboard](https://github.com/karin6543/AlgoTracker/blob/master/public/dashboard.png)
 
 - View auto-generated visualizations that represents overall practice performance
