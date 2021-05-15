@@ -31,6 +31,7 @@ Algo practice is challenging, as always! The excitement of passing a Medium DP p
 - User is able to select error message (single word OR a longer text, sentence)
 - Make request to API endpoint created by AWS lambda by sending the selected text
 - In the API route, logic written in Python will help to pre-process the seleted text, and return the Error Type as a response
+- Response will be pushed to DB, and Error Donut Chart will be redendered
 ![Image of chrome](https://github.com/karin6543/AlgoTracker/blob/master/public/chrome.png)
 
 ## :cake: Tech Stack
