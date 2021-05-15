@@ -11,15 +11,6 @@ import Benchmark from './Benchmark'
 import PrivateRoute from "./PrivateRoute"
 import { AuthProvider } from "../contexts/AuthContext"
 
-// export const Nav = styled.nav`
-//   background:rgba(0, 0, 0, 0);
-//   height: 85px;
-//   display: flex;
-//   justify-content: space-between;
-//   padding: 0.2rem calc((100vw - 1000px) / 2);
-//   z-index: 12;
-  
-// `;
 
 export const NavLink = styled(Link)`
   color: #808080;
