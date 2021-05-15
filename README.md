@@ -16,7 +16,7 @@ Algo Tracker is a web application designed for tracking & analyzing individual u
 ![Image of Dashboard](https://github.com/karin6543/AlgoTracker/blob/master/public/dashboard.png)
 
 - View auto-generated visualizations that represents overall practice performance
-- Donut chart: shows distribution of different error type
+- [x] Donut chart: shows distribution of different error type
 ![Image of Error](https://github.com/karin6543/AlgoTracker/blob/master/public/error.png)
 
 - Compare practice passing rate vs. the avg. Leetcode user passing rate
