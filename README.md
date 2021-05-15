@@ -1,13 +1,13 @@
-# Algo Tracker
+# :bar_chart: Algo Tracker
 https://algo-tracker-dev.web.app
 
-## Description
+## :paperclip: Description
 Algo Tracker is a web application designed for tracking & analyzing individual user's data structures & algorithm practice
 
-## Inspiration
+## :bulb: Inspiration
 Algo practice is challenging, as always! The excitement of passing a Medium DP problem, the frustration of forever stucking in a Linked List problem... why don't we develop a way to keep track of these memorable pieces of algo practices? By re-purposing our daily practice data, Algo Tracker will help users to discover their strength & weakness by analyzing passing rate and error made in multiple problem types.
 
-## Target Users & Main Features
+## :thinking: Target Users & Main Features
 - Data structures & Algorithms learners looking for a centralized platform to keep track of algo practice performance
 - Users are able to maintain a personal account (create an account, sign-in with Google account, and edit profile & password)
 ![Image of Login](https://github.com/karin6543/AlgoTracker/blob/master/public/login.png)
@@ -25,9 +25,14 @@ Algo practice is challenging, as always! The excitement of passing a Medium DP p
 - [x] Side-by-Side Bar Chart: compare user passing rate by category vs. avg LeetCode passing rate
 ![Image of Benchmark](https://github.com/karin6543/AlgoTracker/blob/master/public/benchmark.png)
 
-## Feature Underconstruction :construction:
-- ChromE 
-## Tech Stack
+## :construction:Feature Underconstruction 
+- Allow user to select error message in browser and report to the application
+- Currently leveraging Chrome Extension to capture to browser activity
+- User is able to select error message (single word OR a longer text, sentence)
+- Make request to API endpoint created by AWS lambda by sending the selected text
+- In the API route, logic written in Python will help to pre-process the seleted text, and return the Error Type as a response
+
+## :pancake: Tech Stack
 - Front-end: React, reactstrap, styled-components
 - Backend & OAuth: Firebase Firestore
 - Deployment: Firebase Hosting
