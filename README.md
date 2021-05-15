@@ -12,7 +12,10 @@ Users are able to:
 - View auto-generated visualizations that represents overall practice performance
 - Compare practice passing rate vs. the avg. Leetcode user passing rate
 
-![Image of Yaktocat](https://github.com/karin6543/AlgoTracker/blob/master/public/benchmark.png)
+![Image of Login](https://github.com/karin6543/AlgoTracker/blob/master/public/login.png)
+![Image of Dashboard](https://github.com/karin6543/AlgoTracker/blob/master/public/dashboard.png)
+![Image of Error](https://github.com/karin6543/AlgoTracker/blob/master/public/error.png)
+![Image of Benchmark](https://github.com/karin6543/AlgoTracker/blob/master/public/benchmark.png)
 
 In the project directory, you can run:
 
