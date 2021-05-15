@@ -24,6 +24,7 @@ Any data structures & algorithms learners
 - Front-end: React, reactstrap, styled-components
 - Backend & OAuth: Firebase Firestore
 - Deployment: Firebase Hosting
+- Visualization: D3.js
 
 In the project directory, you can run:
 
