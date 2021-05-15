@@ -4,6 +4,9 @@ https://algo-tracker-dev.web.app
 ## Description
 Algo Tracker is a web application designed for tracking & analyzing individual user's data structures & algorithm practice
 
+## Inspiration
+Algo practice is challening, as always ... the excitement of passing a Medium DP problem, the frustration of forever stucking in a Linked List problem... why don't we develop a way to keep track of these memorable pieces of algo practices? By re-purposing our daily practice data, Algo Tracker will help the user to discover their strength & weakness by analyzing passing rate and error made in multiple problem types.
+
 ## Target User & Main Features
 - Any data structures & algorithms learners
 - Users are able to maintain a personal account (create an account, sign-in with Google account, and edit profile & password)
