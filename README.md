@@ -6,8 +6,7 @@ Algo Tracker is a web application designed for tracking & analyzing individual u
 
 ## Target User & Main Features
 - Any data structures & algorithms learners
-- Users are able to:
-- Maintain a personal account (create an account, sign-in with Google account, and edit profile & password)
+- Users are able to maintain a personal account (create an account, sign-in with Google account, and edit profile & password)
 ![Image of Login](https://github.com/karin6543/AlgoTracker/blob/master/public/login.png)
 
 - Log daily practice outcome & syntax error to the system
@@ -20,6 +19,7 @@ Algo Tracker is a web application designed for tracking & analyzing individual u
 ![Image of Error](https://github.com/karin6543/AlgoTracker/blob/master/public/error.png)
 
 - Compare practice passing rate vs. the avg. Leetcode user passing rate
+- [x] Side-by-Side Bar Chart: compare user passing rate by category vs. avg LeetCode passing rate
 ![Image of Benchmark](https://github.com/karin6543/AlgoTracker/blob/master/public/benchmark.png)
 
 ## Tech Stack
