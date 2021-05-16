@@ -45,6 +45,9 @@ Algo practice is challenging, as always! The excitement of passing a Medium DP p
 - Deployment: Firebase Hosting
 - Visualization: D3.js
 
+## Project Folder Structure & Study Materials
+- Inspired by https://github.com/WebDevSimplified/React-Firebase-Auth
+
 In the project directory, you can run:
 
 ### `npm start`
