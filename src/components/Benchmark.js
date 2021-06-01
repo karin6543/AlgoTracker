@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react'
 // import { Form, Button, Card} from "react-bootstrap"
+import styled from 'styled-components'
 import { FormGroup, Label, Input , Button } from '../GlobalStyles'
 import {useHistory } from "react-router-dom"
 import BChart from './BChart'
-import styled from 'styled-components'
+
 
 function Benchmark() {
   const difficultyRef = useRef()
@@ -24,9 +25,10 @@ function Benchmark() {
     return (
         <>
         
-            <FormContainer onSubmit={handleSubmit}>
+            <FormContainer>
+              <form onSubmit={handleSubmit}>  
           
-              <h4>Benchmark Your Progress</h4><br />
+              <h4 style={{"color":"white"}}>Benchmark Your Progress</h4><br />
               <div> 🧤User Passing Rate</div> <div> 🙂LeetCode Users Avg. Passing Rate</div> 
               <div className='d-flex justify-content-start'>
               <FormGroup id="difficulty">
@@ -37,12 +39,12 @@ function Benchmark() {
                     <option>Hard</option>
                     </select>
               </FormGroup>
-              <button>
+              <Button>
                 Filter
-              </button>
-              <button onClick={handleBack} >Back</button>
+              </Button>
+              <Button onClick={handleBack} >Back</Button>
               </div>
-            
+              </form>
               </FormContainer>
               <BChart diff={diff}/>
        
@@ -53,7 +55,7 @@ function Benchmark() {
 
 const FormContainer = styled.div`
   border-radius: 5px;
-  background-color:#41adcf;
+  background-color:#fcbf49;
   justify-content: center;
   margin: 50px auto;
   padding: 20px;

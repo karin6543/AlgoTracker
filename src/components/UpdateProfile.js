@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react"
-import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
+import styled from 'styled-components'
+import { FormGroup, Label, Input , Button, Select } from '../GlobalStyles'
 
 export default function UpdateProfile() {
   const emailRef = useRef()
@@ -43,45 +44,53 @@ export default function UpdateProfile() {
 
   return (
     <>
-      <Card>
-        <Card.Body>
-          <h2 className="text-center mb-4">Update Profile</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
+      <FormContainer>
+      <form onSubmit={handleSubmit}>
+          <h2>Update Profile</h2>
+            <FormGroup id="email">
+              <Label>Email</Label>
+              <Select
                 type="email"
                 ref={emailRef}
                 required
                 defaultValue={currentUser.email}
               />
-            </Form.Group>
-            <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
+            </FormGroup>
+            <FormGroup id="password">
+              <Label>Password</Label>
+              <Select
                 type="password"
                 ref={passwordRef}
                 placeholder="Leave blank to keep the same"
               />
-            </Form.Group>
-            <Form.Group id="password-confirm">
-              <Form.Label>Password Confirmation</Form.Label>
-              <Form.Control
+            </FormGroup>
+            <FormGroup id="password-confirm">
+              <Label>Password Confirmation</Label>
+              <Select
                 type="password"
                 ref={passwordConfirmRef}
                 placeholder="Leave blank to keep the same"
               />
-            </Form.Group>
-            <button disabled={loading} type="submit">
+            </FormGroup>
+            <Button disabled={loading} type="submit">
               Update
-            </button>
-          </Form>
-        </Card.Body>
-      </Card>
+            </Button>
+        </form>
+      </FormContainer>
       <div className="w-100 text-center mt-2">
         <Link to="/">Cancel</Link>
       </div>
     </>
   )
 }
+const FormContainer = styled.div`
+  border-radius: 5px;
+  background-color:#fcbf49;
+  justify-content: center;
+  margin: 50px auto;
+  padding: 20px;
+  width: fit-content;
+   @media screen and (max-width:600px){
+     width: 90vw
+   }
+`

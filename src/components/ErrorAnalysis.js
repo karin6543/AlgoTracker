@@ -1,10 +1,10 @@
 import React, { useRef } from 'react'
-import { Form, Button, Card} from "react-bootstrap"
+import { FormGroup, Label, Input , Button , Select} from '../GlobalStyles'
 import { Link } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext"
 import { db } from "../firebase"
 import DonutChart from './DonutChart'
-
+import styled from 'styled-components'
 
 function ErrorAnalysis() {
   const dateRef = useRef()
@@ -31,19 +31,19 @@ function ErrorAnalysis() {
     return (
         <>
 
-        <div className='d-flex justify-content-start'>
-        <Card>
-          <Card.Body>
-            <h2 className="text-center mb-4">Create New Record</h2>
+            <FormContainer>
+              <form onSubmit={handleSubmit}>  
+              <h2 style={{"color":"white"}}>Create New Record</h2>
+              <FormGroup id="date">
+                <Label>Date</Label>
+                <div/>
+                <Input type="date" ref={dateRef} required />
+              </FormGroup>
+              <FormGroup id="pass">
+                <Label>Type</Label>
+               
           
-            <Form onSubmit={handleSubmit}>  
-              <Form.Group id="date">
-                <Form.Label>Date</Form.Label>
-                <Form.Control type="date" ref={dateRef} required />
-              </Form.Group>
-              <Form.Group id="pass">
-                <Form.Label>Type</Form.Label>
-                <Form.Control as="select" ref={errorRef} single>
+                <Select as="select" ref={errorRef} single>
                     <option value="AttributeError">AttributeError</option>
                     <option value="IndexError">IndexError</option>
                     <option value="IndexOutOfRange">IndexOutOfRange</option>
@@ -55,11 +55,12 @@ function ErrorAnalysis() {
                     <option value="StopIteration">StopIteration</option>
                     <option value="SyntaxError">SyntaxError</option>
                     <option value="TypeError">TypeError</option>    
-                </Form.Control>
-              </Form.Group>
-              <Form.Group id="qType">
-                <Form.Label>Problem Type</Form.Label>
-                <Form.Control as="select" ref={qTechRef} single>
+                </Select>
+              </FormGroup>
+              <FormGroup id="qType">
+                <Label>Problem Type</Label>
+                {'\n'}
+                <Select as="select" ref={qTechRef} single>
                 <option value="Array Binary Search">Array Binary Search</option>
                     <option value="Pointers">Pointers</option>
                     <option value="String">String</option>
@@ -79,29 +80,40 @@ function ErrorAnalysis() {
                     <option value="Singly Linked List">Singly Linked List</option>
                     <option value="Doubly Linked List">Doubly Linked List</option>
                     <option value="Prefix Trie">Prefix Trie</option>
-                </Form.Control>
-              </Form.Group>
-              <Form.Group id="difficulty">
-                <Form.Label>Platform</Form.Label>
-                    <Form.Control as="select" ref={platformRef} single>
+                </Select>
+              </FormGroup>
+              <FormGroup id="difficulty">
+                <Label>Platform</Label>
+                    <select as="select" ref={platformRef} single>
                     <option value="LeetCode">LeetCode</option>
                     <option value="AlgoExpert">AlgoExpert</option>
                     <option value="HackerRank">HackerRank</option>
                     <option value="Other">Other</option>   
-                    </Form.Control>
-              </Form.Group>
-              <button type="submit">
+                    </select>
+                    
+              </FormGroup>
+              <Button type="submit">
                 Submit
-              </button>
+              </Button>
              
-              <Link to='/'>Back</Link>
-            </Form>
-          </Card.Body>
-        </Card>
+              <Link to='/' style={{"color":"white"}}>Back</Link>
+              </form>
+            </FormContainer>
         <DonutChart />
-        </div></>
+        </>
         
     )
 }
+
+const FormContainer = styled.div`
+  border-radius: 5px;
+  background-color:#fcbf49;
+  justify-content: center;
+  margin: 50px auto;
+  padding: 20px;
+  width: fit-content;
+   @media screen and (max-width:600px){
+     width: 90vw
+   }`
 
 export default ErrorAnalysis

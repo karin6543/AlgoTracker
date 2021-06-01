@@ -1,21 +1,36 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {Link, useHistory, Switch , BrowserRouter as Router} from "react-router-dom"
 import { Button, Container } from '../GlobalStyles';
+import { useAuth } from "../contexts/AuthContext"
 
 const Navbar = () => {
+
+  const [error, setError] = useState("")
+  const { currentUser, logout, userData } = useAuth()
+  const history = useHistory()
+  async function handleLogOut() {
+    setError("")
+
+    try {
+      await logout()
+      history.push("/login")
+    } catch {
+      setError("Failed to log out")
+    }
+  }
 
   return (
   <Nav>
     <NavbarContainer>
       
       <NavMenu>
-          <NavLink to='/newRecord' >Create New</NavLink>
-          <NavLink to='/analyzeError' >Analyze Error</NavLink>
-          <NavLink to='/benchmark' >Benchmark</NavLink>
+          <NavLink to='/newRecord' style={{ color: 'white' }}>Create New</NavLink>
+          <NavLink to='/analyzeError' style={{ color: 'white' }}>Analyze Error</NavLink>
+          <NavLink to='/benchmark' style={{ color: 'white' }}>Benchmark</NavLink>
  
-        <Button variant="link">
+        <Button variant="link" onClick={handleLogOut}>
           Log Out
         </Button>
   
@@ -29,7 +44,7 @@ const Nav = styled.nav`
   position: sticky;
   top: 0;
   height: 80px;
-  background-color: #a5ecd7;
+  background-color: #fcbf49;
   z-index: 3;
   // box-shadow: 0px 5px 20px rgb(48,181,204, 0.5); 
   display: flex;
@@ -55,14 +70,14 @@ const NavLink = styled(Link)`
   margin: 10px;
   // font-weight: bold;
   font-size: 18px;
-  color: #0f3057;
+  color: white;
   transition: all .2s ease;
   &:hover {
-    color: #1F817F;
+    color: white;
   }
   &:active {
       transform: traslateY(3rem);
-      color: #32e0c4;
+      color: #fcbf49;
   }
   @media screen and (max-width:600px){
     text-decoration: none;
