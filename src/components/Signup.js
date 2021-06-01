@@ -1,7 +1,9 @@
 import React, { useRef, useState } from "react"
-import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
+import styled from 'styled-components'
+import { FormGroup, Label, Input , Button , Select} from '../GlobalStyles'
+
 
 export default function Signup() {
   const emailRef = useRef()
@@ -33,35 +35,45 @@ export default function Signup() {
 
   return (
     <>
-      <Card>
-        <Card.Body>
-          <h2 className="text-center mb-4">Sign Up</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" ref={emailRef} required />
-            </Form.Group>
-            <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" ref={passwordRef} required />
-            </Form.Group>
-            <Form.Group id="password-confirm">
-              <Form.Label>Confirm Password</Form.Label>
-              <Form.Control type="password" ref={passwordConfirmRef} required />
-            </Form.Group>
-            <button disabled={loading}  type="submit">
+      <FormContainer>
+        <form onSubmit={handleSubmit}>
+          <h2 style={{"margin-left":"37%", "color":"white"}}>Sign Up</h2>
+            <FormGroup id="email">
+              <Label>Email</Label>
+              <Input type="email" ref={emailRef} required />
+            </FormGroup>
+            <FormGroup id="password">
+              <Label>Password</Label>
+              <Input type="password" ref={passwordRef} required />
+            </FormGroup>
+            <FormGroup id="password-confirm">
+              <Label>Confirm Password</Label>
+              <Input type="password" ref={passwordConfirmRef} required />
+            </FormGroup>
+            <Button disabled={loading}  type="submit" style={{"margin-left":"38%", "color":"fcbf49"}}>
               Sign Up
-            </button>
-          </Form>
-        </Card.Body>
-      </Card>
+            </Button>
+        </form>
+
+      </FormContainer>
       <div className="w-100 text-center mt-2">
-        Already have an account? <Link to="/login">Log In</Link>
+        Already have an account? <Link to="/login" style={{ color: '#fcbf49' }}>Log In</Link>
       </div>
       <div className="w-100 text-center mt-2">
-        Or Sign-In with  <Link to="/google">Google</Link>
+        Or Sign-In with  <Link to="/google"style={{ color: '#fcbf49' }}>Google</Link>
       </div>
     </>
   )
 }
+
+const FormContainer = styled.div`
+  border-radius: 5px;
+  background-color:#fcbf49;
+  justify-content: center;
+  margin: 50px auto;
+  padding: 20px;
+  width: fit-content;
+   @media screen and (max-width:600px){
+     width: 90vw
+   }
+`

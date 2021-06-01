@@ -21,12 +21,12 @@ html {
     }
 }
 body{
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Nunito';
     font-weight: 400;
     line-height: 1;
     font-size: 1.6rem;
-    background: #faf1e6ad;
-    color: #333;
+    background: #eae2b7;
+    color: #eae2b7;
     @media only screen and (max-width: 600px){
         min-height: 100vh;
         min-height: -webkit-fill-available;
@@ -39,12 +39,15 @@ export default GlobalStyles;
 
 
 export const Container = styled.div`
+justify-content: center;
+align-items: center;
+display:flex;
 padding: 16px;
 margin: 0 auto;
 max-width: 1000px;
 width: 100%;
 @media screen and (max-width:600px){
-  margin: 3px, auto
+  margin: 3px, auto;
   padding: 0 5px;
 }
 @media screen and (max-width:991px) {
@@ -55,59 +58,16 @@ width: 100%;
 
 export const Button = styled.button`
   background-color: white;
-  color: #51adcf;
+  color: #fcbf49;
   font-size: 1em;
   font-weight: bold;
   margin: 1em;
   padding: 0.25em 1em;
   border-radius: 10px;
-  border: 2px solid #51adcf;
+  border: 2px solid #fcbf49;
   &:hover {
-    background-color: #95e1d3;
+    background-color: #fcbf49;
     color: #0f3057
-  } 
-`;
-
-export const PlaceButton = styled.button`
-  background-color: white;
-  color: #51adcf;
-  font-size: 12px;
-  padding: 0.25em 1em;
-  border-radius: 10px;
-  border: 1px solid #51adcf;
-  margin: 10px auto 0px;
-  &:hover {
-    background-color: #95e1d3;
-    color: #0f3057
-  } 
-`;
-
-export const SpecialButton = styled.button`
-  background-color: #51adcf;
-  color: white;
-  font-size: 1em;
-  font-weight: bold;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border-radius: 10px;
-  border: 2px solid #51adcf;
-  &:hover {
-    background-color: #95e1d3;
-    color: #0f3057
-  } 
-`;
-
-export const FriendButton = styled.button`
-  color: white ;
-  background-color: #95e1d3;
-  font-size: 12px;
-  margin: .5em;
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #95e1d3;
-  &:hover {
-    color: white;
-    background-color: #51adcf;
   } 
 `;
 

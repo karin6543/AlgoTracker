@@ -1,10 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { Form, Button, Card} from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link } from "react-router-dom"
 import { db } from "../firebase"
 import Chart from "./Chart"
-
+import styled from 'styled-components'
+import { FormGroup, Label, Input , Button, Select } from '../GlobalStyles'
 
 function NewRecord() {
     const dateRef = useRef()
@@ -60,37 +60,35 @@ function NewRecord() {
         <>
         <div className='d-flex justify-content-around'>
      
-        <Card>
-          <Card.Body>
- 
-            <h4 className="text-center mb-4">Create New Record</h4>
-          
-            <Form onSubmit={handleSubmit}>
-              <Form.Group id="date">
-                <Form.Label>Date</Form.Label>
-                <Form.Control type="date" ref={dateRef} required />
-              </Form.Group>
-              <Form.Group id="pass">
-                <Form.Label>Pass/Fail</Form.Label>
-                <Form.Control as="select" ref={passRef} single>
+        <FormContainer >
+         <form onSubmit={handleSubmit}>
+            <h4 style={{"color":"white"}}>Create New Record</h4>
+        
+              <FormGroup id="date">
+                <Label>Date</Label>
+                <Input type="date" ref={dateRef} required />
+              </FormGroup>
+              <FormGroup id="pass">
+                <Label>Pass/Fail</Label>
+                <Select as="select" ref={passRef} single>
                     <option>Yay</option>
                     <option>Nay</option>
-                </Form.Control>
-              </Form.Group>
-              <Form.Group id="qType" onChange={handleChange}>
-                <Form.Label>Problem Type</Form.Label>
-                <Form.Control as="select" ref={qTypeRef} single>
+                </Select>
+              </FormGroup>
+              <FormGroup id="qType" onChange={handleChange}>
+                <Label>Problem Type</Label>
+                <Select as="select" ref={qTypeRef} single>
                     <option>Array</option>
                     <option>Dynamic Programming</option>
                     <option>Graph</option>
                     <option>Linked List</option>
                     <option>Tree</option>
                     <option>Trie</option>
-                </Form.Control>
-              </Form.Group>
-              <Form.Group id="qTechnique">
-                <Form.Label>Technique Used</Form.Label>
-                <Form.Control as="select" ref={qTechRef} single>
+                </Select>
+              </FormGroup>
+              <FormGroup id="qTechnique">
+                <Label>Technique Used</Label>
+                <Select as="select" ref={qTechRef} single>
                     <option value="Array Binary Search" disabled={status["Array"]}>Array Binary Search</option>
                     <option value="Pointers" disabled={status["Array"]}>Pointers</option>
                     <option value="String" disabled={status["Array"]}>String</option>
@@ -110,27 +108,39 @@ function NewRecord() {
                     <option value="Singly Linked List" disabled={status['Linked List']}>Singly Linked List</option>
                     <option value="Doubly Linked List" disabled={status['Linked List']}>Doubly Linked List</option>
                     <option value="Prefix Trie" disabled={status['Trie']}>Prefix Trie</option>
-                </Form.Control>
-              </Form.Group>
-              <Form.Group id="difficulty">
-                <Form.Label>Difficulty</Form.Label>
-                    <Form.Control as="select" ref={difficultyRef} single>
+                </Select>
+              </FormGroup>
+              <FormGroup id="difficulty">
+                <Label>Difficulty</Label>
+                  <div>
+                  {"\n"}
+                    <Select as="select" ref={difficultyRef} single>
                     <option>Easy</option>
                     <option>Medium</option>
                     <option>Hard</option>
-                    </Form.Control>
-              </Form.Group>
-              <button type="submit">
+                    </Select>
+                    </div>
+                
+              </FormGroup>
+              <Button type="submit">
                 Create
-              </button>
-        
-            </Form>
-          </Card.Body>
-        </Card>
+              </Button>
+              </form>
+        </FormContainer>
         {userData? <Chart/>: <h4>Dude, Add Your First Practice Data</h4>}
         </div>
         </>
     )
 }
-
+const FormContainer = styled.div`
+  border-radius: 5px;
+  background-color:#fcbf49;
+  justify-content: center;
+  margin: 50px auto;
+  padding: 20px;
+  width: fit-content;
+   @media screen and (max-width:600px){
+     width: 90vw
+   }
+`
 export default NewRecord

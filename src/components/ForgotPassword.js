@@ -1,7 +1,8 @@
 import React, { useRef, useState } from "react"
-import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link } from "react-router-dom"
+import styled from 'styled-components'
+import { FormGroup, Label, Input , Button, Select } from '../GlobalStyles'
 
 export default function ForgotPassword() {
   const emailRef = useRef()
@@ -28,31 +29,41 @@ export default function ForgotPassword() {
 
   return (
     <>
-      <Card>
-        <Card.Body>
-          <h2 className="text-center mb-4">Password Reset</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          {message && <Alert variant="success">{message}</Alert>}
-          <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" ref={emailRef} required />
-            </Form.Group>
-            <button disabled={loading} type="submit">
+      <FormContainer>
+      <form  onSubmit={handleSubmit}>
+    
+          <h2 style={{"margin-left":"13%", "color":"white"}}>Password Reset</h2>
+            <FormGroup id="email">
+              <Label>Email</Label>
+              <Input type="email" ref={emailRef} required />
+            </FormGroup>
+            <Button disabled={loading} type="submit" style={{"margin-left":"25%", "color":"fcbf49"}}>
               Reset Password
-            </button>
-          </Form>
+
+          </Button>
           <div className="w-100 text-center mt-3">
             <Link to="/login">Login</Link>
           </div>
-        </Card.Body>
-      </Card>
+          </form>
+      </FormContainer>
       <div className="w-100 text-center mt-2">
-        Need an account? <Link to="/signup">Sign Up</Link>
+        Need an account? <Link to="/signup" style={{ color: '#FFF' }} >Sign Up</Link>
       </div>
       <div className="w-100 text-center mt-2">
-        Or Sign-In with  <Link to="/google">Google</Link>
+        Or Sign-In with  <Link to="/google" style={{ color: '#FFF' }} >Google</Link>
       </div>
     </>
   )
 }
+
+const FormContainer = styled.div`
+  border-radius: 5px;
+  background-color:#fcbf49;
+  justify-content: center;
+  margin: 50px auto;
+  padding: 20px;
+  width: fit-content;
+   @media screen and (max-width:600px){
+     width: 90vw
+   }
+`

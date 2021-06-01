@@ -332,7 +332,7 @@ function Chart() {
 
     return (
       <div style={{margin: '0px 20px'}} >
-               <h1>Daily Pass / Fail Distribution</h1>
+               <h4 style={{color:"#fcbf49"}}>Daily Pass / Fail Distribution</h4>
          <div id='my_dataviz' className="text-center mb-4">
 
         </div>

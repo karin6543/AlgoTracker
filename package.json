@@ -1,5 +1,5 @@
 {
-  "name": "Algo-Tracker",
+  "name": "algo-tracker",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -38,5 +38,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "description": "https://algo-tracker-dev.web.app",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karin6543/AlgoTracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karin6543/AlgoTracker/issues"
   }
 }
