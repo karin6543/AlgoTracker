@@ -50,9 +50,9 @@ export default function Signup() {
               <Form.Label>Confirm Password</Form.Label>
               <Form.Control type="password" ref={passwordConfirmRef} required />
             </Form.Group>
-            <Button disabled={loading} className="w-100" type="submit" color="warning">
+            <button disabled={loading}  type="submit">
               Sign Up
-            </Button>
+            </button>
           </Form>
         </Card.Body>
       </Card>
