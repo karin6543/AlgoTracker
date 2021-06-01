@@ -1,7 +1,9 @@
 import React, { useRef, useState } from 'react'
-import { Form, Button, Card} from "react-bootstrap"
+// import { Form, Button, Card} from "react-bootstrap"
+import { FormGroup, Label, Input , Button } from '../GlobalStyles'
 import {useHistory } from "react-router-dom"
 import BChart from './BChart'
+import styled from 'styled-components'
 
 function Benchmark() {
   const difficultyRef = useRef()
@@ -21,33 +23,43 @@ function Benchmark() {
   }
     return (
         <>
-                 <h4>Benchmark Your Progress</h4><br />
-      <div> 🧤User Passing Rate</div> <div> 🙂LeetCode Users Avg. Passing Rate</div> 
-      <div className='d-flex justify-content-start'>
-      
-        <Card>
-          <Card.Body>
-            <h2 className="text-center mb-4">Benchmark Your Progress</h2>
-            <Form onSubmit={handleSubmit}>
-              <Form.Group id="difficulty">
-                <Form.Label>Difficulty</Form.Label>
-                    <Form.Control as="select" ref={difficultyRef} onChange={handleChange} single>
+        
+            <FormContainer onSubmit={handleSubmit}>
+          
+              <h4>Benchmark Your Progress</h4><br />
+              <div> 🧤User Passing Rate</div> <div> 🙂LeetCode Users Avg. Passing Rate</div> 
+              <div className='d-flex justify-content-start'>
+              <FormGroup id="difficulty">
+                <Label>Difficulty</Label>
+                    <select as="select" ref={difficultyRef} onChange={handleChange} single>
                     <option>Easy</option>
                     <option>Medium</option>
                     <option>Hard</option>
-                    </Form.Control>
-              </Form.Group>
-              <Button className="w-100" type="submit" style={{color:"#00005c", margin: "5%", boxShadow: "5px 5px 3px rgba(46, 46, 46, 0.62)"}}>
+                    </select>
+              </FormGroup>
+              <button>
                 Filter
-              </Button>
-              <Button onClick={handleBack} className="w-100">Back</Button>
-            </Form>
-          </Card.Body>
-        </Card>
-        <BChart diff={diff}/>
-        </div>
+              </button>
+              <button onClick={handleBack} >Back</button>
+              </div>
+            
+              </FormContainer>
+              <BChart diff={diff}/>
+       
+        
         </>
     )
 }
 
+const FormContainer = styled.div`
+  border-radius: 5px;
+  background-color:#41adcf;
+  justify-content: center;
+  margin: 50px auto;
+  padding: 20px;
+  width: fit-content;
+   @media screen and (max-width:600px){
+     width: 90vw
+   }
+`
 export default Benchmark

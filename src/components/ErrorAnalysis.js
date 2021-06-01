@@ -90,9 +90,9 @@ function ErrorAnalysis() {
                     <option value="Other">Other</option>   
                     </Form.Control>
               </Form.Group>
-              <Button className="w-100" type="submit" color="warning">
+              <button type="submit">
                 Submit
-              </Button>
+              </button>
              
               <Link to='/'>Back</Link>
             </Form>

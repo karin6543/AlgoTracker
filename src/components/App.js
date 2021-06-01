@@ -1,6 +1,6 @@
 import React from "react"
 import Signup from "./Signup"
-import { Container } from "react-bootstrap"
+// import { Container } from "react-bootstrap"
 import { AuthProvider } from "../contexts/AuthContext"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Dashboard from "./Dashboard"
@@ -13,6 +13,8 @@ import ErrorAnalysis from './ErrorAnalysis'
 import Benchmark from './Benchmark'
 import Google from './Google'
 import Test from './Test'
+import { Container } from '../GlobalStyles';
+import styled from 'styled-components';
 
 function App() {
   return (

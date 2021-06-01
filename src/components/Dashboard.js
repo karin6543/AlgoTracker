@@ -1,5 +1,5 @@
 import React, { useState , PropTypes} from "react"
-import { Button, Navbar } from "react-bootstrap"
+// import { Button, Navbar } from "react-bootstrap"
 import { FaBars } from 'react-icons/fa';
 import { useAuth } from "../contexts/AuthContext"
 import { NavLink as Link, useHistory, Switch , BrowserRouter as Router} from "react-router-dom"
@@ -10,7 +10,8 @@ import ErrorAnalysis from './ErrorAnalysis'
 import Benchmark from './Benchmark'
 import PrivateRoute from "./PrivateRoute"
 import { AuthProvider } from "../contexts/AuthContext"
-
+import { Button, Container } from '../GlobalStyles';
+import NavBar from './NavBar'
 
 export const NavLink = styled(Link)`
   color: #808080;
@@ -67,20 +68,7 @@ export default function Dashboard() {
   return (
     <>
     <Router>
-      <Navbar color="light" light expand="md">
-      <Bars />
-      <NavMenu>
-          <NavLink to='/newRecord' >Create New</NavLink>
-          <NavLink to='/analyzeError' >Analyze Error</NavLink>
-          <NavLink to='/benchmark' >Benchmark</NavLink>
-          <div className="w-100 text-center mt-2">
-        <Button variant="link" onClick={handleLogout}>
-          Log Out
-        </Button>
-  
-      </div> 
-          </NavMenu>
-      </Navbar>
+      <NavBar />
       <AuthProvider>
     
             <Switch> 

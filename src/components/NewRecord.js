@@ -120,14 +120,14 @@ function NewRecord() {
                     <option>Hard</option>
                     </Form.Control>
               </Form.Group>
-              <Button className="w-100" type="submit">
+              <button type="submit">
                 Create
-              </Button>
+              </button>
         
             </Form>
           </Card.Body>
         </Card>
-        {userData? <Chart class="ml-1"/>: <h4>Dude, Add Your First Practice Data</h4>}
+        {userData? <Chart/>: <h4>Dude, Add Your First Practice Data</h4>}
         </div>
         </>
     )
