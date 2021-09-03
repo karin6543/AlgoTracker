@@ -1,5 +1,27 @@
-# :bar_chart: Algo Tracker
+# :bar_chart: Algo Tracker v1.5
 https://algo-tracker-dev.web.app
+
+## : Upcoming Features
+功能1. 查看实时lc题目列表
+- 建立Azure后端
+- Azure function进行lc爬虫，更新数据库
+- 定时运行
+
+功能2. 训练记录与邮件提醒
+- 为用户设定训练记录页面
+- 允许用户将题目加入提醒scheduler，并设置频率
+- 例：将word search设为2天后回顾，并收到提醒
+- 用户登录后如当天有需要回顾的题目，会收到pop-up notification
+
+功能3. 更精细，合理的题目类型&技巧分类
+- 细分数据结构与算法解题技巧
+- 减少重复的定义
+
+## ：Project Timeline
+- 9/3 ~ 9/6: 重新定义分类，重新设计后端
+- 9/10 ~ 9/16：建立ADF相关逻辑，修改爬虫script   
+- 9/17 ~ 9/23 训练记录 + scheduler
+- 9/24 美化界面
 
 ## :paperclip: Description
 Algo Tracker is a web application designed for tracking & analyzing individual user's data structures & algorithm practice
