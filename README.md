@@ -19,9 +19,9 @@ https://algo-tracker-dev.web.app
 - 减少重复的定义
 
 ## Project Timeline
-- 9/3 ~ 9/6: 重新定义题型分类，建立GC后端，
-- 9/10 ~ 9/16：修改爬虫script  
-- 9/17 ~ 9/23 训练记录 + scheduler
+- 9/3 ~ 9/6: 重新定义题型分类，回顾firebase写入逻辑，建立GC后端（db)，替换firebase写入前端用户数据（保留Google OAuth, 数据写入Cloud SQL Server)
+- 9/10 ~ 9/16：修改爬虫script，deploy至GCF
+- 9/17 ~ 9/23 增加训练记录 & scheduler 相关逻辑
 - 9/24 美化界面
 
 ## :paperclip: Description
