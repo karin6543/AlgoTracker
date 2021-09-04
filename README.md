@@ -1,7 +1,7 @@
 # :bar_chart: Algo Tracker v1.5
 https://algo-tracker-dev.web.app
 
-## : Upcoming Features
+## Upcoming Features
 功能1. 查看实时lc题目列表
 - 建立Google Cloud后端: User, UserPractice, ProblemSchedule, Problems
 - Google cloud function进行lc爬虫，更新数据库
@@ -18,7 +18,7 @@ https://algo-tracker-dev.web.app
 - 细分数据结构与算法解题技巧
 - 减少重复的定义
 
-## ：Project Timeline
+## Project Timeline
 - 9/3 ~ 9/6: 重新定义分类，重新设计后端
 - 9/10 ~ 9/16：建立ADF相关逻辑，修改爬虫script   
 - 9/17 ~ 9/23 训练记录 + scheduler
