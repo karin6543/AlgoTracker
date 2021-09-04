@@ -19,8 +19,8 @@ https://algo-tracker-dev.web.app
 - 减少重复的定义
 
 ## Project Timeline
-- 9/3 ~ 9/6: 重新定义分类，重新设计后端
-- 9/10 ~ 9/16：建立ADF相关逻辑，修改爬虫script   
+- 9/3 ~ 9/6: 重新定义题型分类，建立GC后端，
+- 9/10 ~ 9/16：修改爬虫script  
 - 9/17 ~ 9/23 训练记录 + scheduler
 - 9/24 美化界面
 
