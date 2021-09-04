@@ -3,9 +3,10 @@ https://algo-tracker-dev.web.app
 
 ## : Upcoming Features
 功能1. 查看实时lc题目列表
-- 建立Azure后端
-- Azure function进行lc爬虫，更新数据库
-- 定时运行
+- 建立Google Cloud后端: User, UserPractice, ProblemSchedule, Problems
+- Google cloud function进行lc爬虫，更新数据库
+- 每周一次按tag爬虫，不需要login
+- **排除了ADF因为没有必要
 
 功能2. 训练记录与邮件提醒
 - 为用户设定训练记录页面
