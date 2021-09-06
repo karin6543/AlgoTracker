@@ -9,6 +9,7 @@
     "bootstrap": "^4.5.2",
     "d3": "^6.7.0",
     "firebase": "^7.20.0",
+    "knex": "^0.95.11",
     "react": "^16.13.1",
     "react-bootstrap": "^1.3.0",
     "react-dom": "^16.13.1",
@@ -41,7 +42,6 @@
   },
   "description": "https://algo-tracker-dev.web.app",
   "main": "index.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/karin6543/AlgoTracker.git"

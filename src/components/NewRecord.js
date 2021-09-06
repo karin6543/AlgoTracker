@@ -5,6 +5,7 @@ import { db } from "../firebase"
 import Chart from "./Chart"
 import styled from 'styled-components'
 import { FormGroup, Label, Input , Button, Select } from '../GlobalStyles'
+// const Knex = require('knex');
 
 function NewRecord() {
     const dateRef = useRef()
