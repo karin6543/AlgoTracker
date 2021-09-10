@@ -12,6 +12,7 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true)
   const [userData, setUserData] = useState()
   const [userError, setUserError] = useState()
+  const [problems, setProblems] = useState([])
 
 
   function signup(email, password) {
@@ -61,6 +62,14 @@ export function AuthProvider({ children }) {
           console.log(err.message)
           })
 
+        db.collection('problems').onSnapshot(snapshot => {
+      
+          setProblems(snapshot.docs)
+        
+      },(err) => {
+          console.log(err.message)
+          })
+
       }
    
       else{
@@ -78,6 +87,7 @@ export function AuthProvider({ children }) {
     currentUser,
     userData,
     userError,
+    problems,
     login,
     signup,
     logout,

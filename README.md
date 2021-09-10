@@ -3,10 +3,9 @@ https://algo-tracker-dev.web.app
 
 ## Upcoming Features
 功能1. 查看实时lc题目列表
-- 建立Google Cloud后端: User, UserPractice, ProblemSchedule, Problems
+- 新增collections: User, UserPractice, ProblemSchedule, Problems
 - Google cloud function进行lc爬虫，更新数据库
 - 每周一次按tag爬虫，不需要login
-- **排除了ADF因为没有必要
 
 功能2. 训练记录与邮件提醒
 - 为用户设定训练记录页面
@@ -19,7 +18,7 @@ https://algo-tracker-dev.web.app
 - 减少重复的定义
 
 ## Project Timeline
-- 9/3 ~ 9/6: 重新定义题型分类，回顾firebase写入逻辑，建立GC后端（db)，替换firebase写入前端用户数据（保留Google OAuth, 数据写入Cloud SQL Server)
+- 9/3 ~ 9/6: 重新定义题型分类，增加新firebase collection, 增加user practice UI
 - 9/10 ~ 9/16：修改爬虫script，deploy至GCF
 - 9/17 ~ 9/23 增加训练记录 & scheduler 相关逻辑
 - 9/24 美化界面

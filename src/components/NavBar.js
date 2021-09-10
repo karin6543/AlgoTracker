@@ -26,6 +26,8 @@ const Navbar = () => {
     <NavbarContainer>
       
       <NavMenu>
+          <NavLink to='/UserPractice' style={{ color: 'white'}}>User Practice</NavLink>
+          <NavLink to='/UserSchedule' style={{ color: 'white'}}>Schedule</NavLink>
           <NavLink to='/newRecord' style={{ color: 'white' }}>Create New?</NavLink>
           <NavLink to='/analyzeError' style={{ color: 'white' }}>Analyze Error</NavLink>
           <NavLink to='/benchmark' style={{ color: 'white' }}>Benchmark</NavLink>
