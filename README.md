@@ -18,8 +18,11 @@ https://algo-tracker-dev.web.app
 - 减少重复的定义
 
 ## Project Timeline
-- 9/3 ~ 9/6: 重新定义题型分类，增加新firebase collection, 增加user practice UI
-- 9/10 ~ 9/16：修改爬虫script，deploy至GCF
+- 9/15: 
+-[]修改 fetch problems 顺序: 登录即fetch
+-[]增加类似购物车checkout component,将题目添加到practice problem, schedule collection
+-[]如有时间就查看能否在cloud内access firebase数据
+
 - 9/17 ~ 9/23 增加训练记录 & scheduler 相关逻辑
 - 9/24 美化界面
 
