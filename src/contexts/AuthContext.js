@@ -48,7 +48,7 @@ export function AuthProvider({ children }) {
         console.log('sign in', user)
            db.collection('tracker').where("userId", "==", user.email)
       .onSnapshot(snapshot => {
-        console.log('fetch success')
+        console.log('user signin success')
         setUserData(snapshot.docs)
     },(err) => {
         console.log(err.message)

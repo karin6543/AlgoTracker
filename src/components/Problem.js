@@ -1,15 +1,17 @@
 import React from 'react'
 
 function Problem(props) {
+    
+    let {title, difficulty, url, type, rate} = props
+    // console.log([title, difficulty, url, type, rate])
 
-    const pData = props.prop.data()
     return (
         <div>
-            <h4>Name: {pData.problemName}</h4>
-            <h4>id:  {pData.prblemId}</h4>
-            <h4>Difficulty</h4>
-            <h4>DS</h4>
-            <h4>Rate</h4>
+           
+            <h3>Title: {title}</h3>
+            <h4>difficulty: {difficulty}</h4>
+            <a href={url}> link </a>
+            <div><span>Type:{"  "} {type}</span><span>Rate:{rate}</span></div>
         </div>
     )
 }

@@ -124,7 +124,7 @@ function Chart() {
           parsedData['columns'] = Object.keys(doc)
         });
     
-       console.log('here is parse data', parsedData)
+  
     
         let svgWidth = 500, svgHeight = 300, barPadding =5;
         let barWidth = (svgWidth / data.length);
@@ -188,7 +188,7 @@ function Chart() {
       .attr("class", "tooltip")
       .style("display", "none");
     
-    console.log('stack data', parsedData)
+
     tooltip.append("rect")
       .attr("width", 60)
       .attr("height", 20)
