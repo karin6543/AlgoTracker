@@ -1,44 +1,46 @@
 import axios from 'axios'
 import React, { Component, useRef, useState, useEffect } from 'react'
 import Problem from './Problem'
+import UserSchedule from './UserSchedule'
+import { useAuth } from "../contexts/AuthContext"
 
 
 function Problems() {
-    let [problems, setProblems] = useState([])
-    let [difficulty, setDiff] = useState([])
-    let [id, setId] = useState([])
-    let [url, setUrl] = useState([])
+    
     let [arr, setArr] = useState([])
     let [res, setRes] = useState([])
+    let [selectId, setId] = useState()
+    const idRef = useRef()
+    const { currentUser, logout, userData, lcProblems } = useAuth()
 
-    const fetchData = async ()=>{
-        await axios.get('https://us-east1-algo-tracker-dev.cloudfunctions.net/getProblems').then((r)=>{
-            setRes(r.data)
-        //     setProblems(res.data.problems)
-        //     setDiff(res.data.difficulty)
-        //     setUrl(res.data.urls)
-        //     setId(res.data.ids)
-        })
+    const onClickProb = (e) =>{
+        setId(e.target.id)
     }
+    
 
     useEffect(()=>{
-        let {problems, difficulty, ids, urls, rates, types} = res
-        // console.log(problems)
-        if(problems){
-            for(let i=0;i<problems.length;i++){
-                arr.push({'id':ids[i],'title':problems[i],'difficulty': difficulty[i], 'url': urls[i], 'type': types[i], 'rate': rates[i]})
+        if(lcProblems){
+            let temp = []
+            let {problems, difficulty, ids, urls, rates, types} = lcProblems
+            // console.log(problems)
+            if(problems){
+                for(let i=0;i<problems.length;i++){
+                    temp.push({'id':ids[i],'title':problems[i],'difficulty': difficulty[i], 'url': urls[i], 'type': types[i], 'rate': rates[i]})
+                }
+                setArr(temp)
             }
-
-            setArr(arr)
         }
        
-    }, [res])
+       
+    }, [lcProblems])
+
 
     return (
         <div>
-            <button onClick={fetchData}>Load Problems</button>
+            <UserSchedule props={selectId}/>
+            
            
-            {arr.length>0? arr.map(p=> <div><Problem title={p.title} difficulty={p.difficulty} key={p.id} url={p.url} rate={p.rate} type={p.type}/><button>Select</button></div>):''}
+            {arr.length>0? arr.map(p=> <div><Problem title={p.title} difficulty={p.difficulty} key={p.id} url={p.url} rate={p.rate} type={p.type}/><button onClick={onClickProb} id={p.id}>Select</button></div>):''}
    
            
         </div>

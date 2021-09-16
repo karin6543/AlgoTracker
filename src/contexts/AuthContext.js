@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react"
 import { auth, db } from "../firebase"
+import axios from 'axios'
 
 const AuthContext = React.createContext()
 
@@ -12,8 +13,8 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true)
   const [userData, setUserData] = useState()
   const [userError, setUserError] = useState()
-  const [problems, setProblems] = useState([])
-
+  const [lcProblems, setProblems] = useState()
+  const [res, setRes] = useState([])
 
   function signup(email, password) {
     return auth.createUserWithEmailAndPassword(email, password)
@@ -39,10 +40,19 @@ export function AuthProvider({ children }) {
     return currentUser.updatePassword(password)
   }
 
+  const fetchData = async ()=>{
+    await axios.get('https://us-east1-algo-tracker-dev.cloudfunctions.net/getProblems').then((r)=>{
+      
+        setProblems(r.data)
+ 
+    })
+}
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
 
       if(user){
+        fetchData()
         setCurrentUser(user)
         setLoading(false)
         console.log('sign in', user)
@@ -62,13 +72,13 @@ export function AuthProvider({ children }) {
           console.log(err.message)
           })
 
-        db.collection('problems').onSnapshot(snapshot => {
+      //   db.collection('problems').onSnapshot(snapshot => {
       
-          setProblems(snapshot.docs)
+      //     setProblems(snapshot.docs)
         
-      },(err) => {
-          console.log(err.message)
-          })
+      // },(err) => {
+      //     console.log(err.message)
+      //     })
 
       }
    
@@ -87,7 +97,7 @@ export function AuthProvider({ children }) {
     currentUser,
     userData,
     userError,
-    problems,
+    lcProblems,
     login,
     signup,
     logout,
