@@ -19,9 +19,13 @@ https://algo-tracker-dev.web.app
 
 ## Project Timeline
 - 9/15: 
-- [] 修改 fetch problems 顺序: 登录即fetch
-- [] 增加类似购物车checkout component,将题目添加到practice problem, schedule collection
-- [] 如有时间就查看能否在cloud内access firebase数据
+- [x] 修改 fetch problems 顺序: 登录即fetch
+- [x] 增加类似购物车checkout component,将题目添加到practice problem, schedule collection
+
+
+- 9/16:
+- [] 调整cart UI: 将题目显示在cart内， 增加 pass/fail 
+- [] 能否在cloud function内access firebase数据
 
 - 9/17 ~ 9/23 增加训练记录 & scheduler 相关逻辑
 - 9/24 美化界面
