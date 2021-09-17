@@ -2,7 +2,7 @@
 https://algo-tracker-dev.web.app
 
 ## Upcoming Features
-功能1. 查看实时lc题目列表
+功能1. 查看实时lc题目列表 (只能使用selenium爬，Not worth it)
 - 新增collections: User, UserPractice, ProblemSchedule, Problems
 - Google cloud function进行lc爬虫，更新数据库
 - 每周一次按tag爬虫，不需要login
@@ -24,7 +24,7 @@ https://algo-tracker-dev.web.app
 
 
 - 9/16:
-- [] 调整cart UI: 将题目显示在cart内， 增加 pass/fail 
+- [x] 调整cart UI: 将题目显示在cart内， 增加 pass/fail 
 - [] 能否在cloud function内access firebase数据
 
 - 9/17 ~ 9/23 增加训练记录 & scheduler 相关逻辑
