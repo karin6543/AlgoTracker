@@ -25,7 +25,12 @@ https://algo-tracker-dev.web.app
 
 - 9/16:
 - [x] 调整cart UI: 将题目显示在cart内， 增加 pass/fail 
-- [] 能否在cloud function内access firebase数据
+- [x] 能否在cloud function内access firebase数据
+
+- 9/17:
+- [x] 找到能够发canlendar invite的api
+- [x] 完成schedule invite逻辑
+- [] 整理当前进度
 
 - 9/17 ~ 9/23 增加训练记录 & scheduler 相关逻辑
 - 9/24 美化界面
