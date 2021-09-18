@@ -97,6 +97,7 @@ function Problems() {
     
     function handleNum(){
         setnumPerPage(parseInt(numRef.current.value))
+        setcurrentPage(1)
     }
     function paginate(num){
         setcurrentPage(num)
