@@ -30,10 +30,19 @@ https://algo-tracker-dev.web.app
 - 9/17:
 - [x] 找到能够发canlendar invite的api
 - [x] 完成schedule invite逻辑
-- [] 整理当前进度
+- [x] 整理当前进度
 
-- 9/17 ~ 9/23 增加训练记录 & scheduler 相关逻辑
-- 9/24 美化界面
+- 9/18 ~ 9/23 
+- [x] 搜索by id
+- [] 创建题目记录后, 发送email
+- [] 题目再细分： 增加mapping
+- [] 将当前用户数据替换为API数据
+- [] ui整理: figma建图
+- [] 修复routing
+- [] css
+
+
+
 
 ## :paperclip: Description
 Algo Tracker is a web application designed for tracking & analyzing individual user's data structures & algorithm practice

@@ -54,34 +54,40 @@ function Problems() {
     }, [lcProblems])
 
     function handleChange(e){
-
+        const searchId = idRef.current.value
         const searchTerm = keywordRef.current.value
         const diffTerm = diffRef.current.value 
         const typeTerm = typeRef.current.value
 
         let filterArr = []
         //1st - filter by keyword
-        if(searchTerm !==''){
-           
-            filterArr = filterByKeyword(arr, searchTerm)
+        if(searchId !=''){
+            filterArr = fitlerById(arr, searchId)
         }
         else{
             filterArr = arr
         }
+
+        if(searchTerm !==''){
+           
+            filterArr = filterByKeyword(filterArr, searchTerm)
+        }
+    
         //2nd - filter by diff
         if(diffTerm !=='-'){
             
             filterArr = filterByDifficulty(filterArr, diffTerm)
         }
-        else{
-            filterArr = filterArr
-        }
+        
         if(typeTerm !=='-'){
          
             filterArr = filterByType(filterArr, typeTerm)
         }
     
         setFilterArr(filterArr)
+    }
+    function fitlerById(a, id){
+        return a.filter((ele)=>{return ele.id+1==id})
     }
 
     function filterByKeyword(a, keyword){
@@ -111,6 +117,8 @@ function Problems() {
             <div>Filteres: {}</div> 
             <form>
                 <div onChange={handleChange}>
+                    <label>By ID</label>
+                    <input ref={idRef}></input>
                     <label>By Keyword</label>
                     <input ref={keywordRef}></input>
                     
