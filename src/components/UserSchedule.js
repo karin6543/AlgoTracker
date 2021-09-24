@@ -1,9 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { useAuth } from "../contexts/AuthContext"
 import { db } from "../firebase"
+import {pMap} from "./ProblemMap"
 
 function UserSchedule(fromParent) {
-   
+  
   const defaultNumDay = 3
   const defaultEmail = 'iris.shi@gmail.com'
 
@@ -18,35 +19,56 @@ function UserSchedule(fromParent) {
   let pId = null
   let pTitle = null
   let pTypes = []
+  let dsDisplay = []
+  let techniqueDisplay = []
+  let typeDisplay = []
 
   if(fromParent.props){
       pId = fromParent.props.id
       pTitle = fromParent.props.title
-      pTypes = fromParent.props.type
+      pTypes = fromParent.props.type.replaceAll("'",'').replaceAll(' ','').replace('[', '').replace(']', '').split(',')
+    
+      for(let i = 0; i<pTypes.length; i++){
+          const key = pTypes[i]
+          const val = pMap[key.toLowerCase()]
+          if(val === 'technique'){
+              techniqueDisplay.push(key)
+          }
+          else{
+              typeDisplay.push(key)
+          }
+      }
   }
 
   async function handleSubmit(e) {
       
     e.preventDefault()
-    const today = new Date()
-    today.setDate(today.getDate() + defaultNumDay)
-    let dd = today.getDate();
-    let mm = today.getMonth() + 1;
-    let y = today.getFullYear();
-    let formattedDate = y + '-'+ mm + '-'+ dd;
 
-    const dateSubmit = dateRef.current?dateRef.current.value:formattedDate; 
-    const emailSubmit = emailRef.current?emailRef.current.value: defaultEmail
-    const passSubmit = passRef.current? passRef.current.value: 'No'
+    // const today = new Date()
+    // today.setDate(today.getDate() + defaultNumDay)
+    // let dd = today.getDate();
+    // let mm = today.getMonth() + 1;
+    // let y = today.getFullYear();
+    // let formattedDate = y + '-'+ mm + '-'+ dd;
 
-    for(let i=0; i<pTypes.length; i++){
-        db.collection('userSchedule').add({
-        noticeDate: today,
-        problemId: parseInt(pId),
-        email: emailSubmit,
-        type: pTypes[i]
-        })
-  }}
+    // const dateSubmit = dateRef.current?dateRef.current.value:formattedDate; 
+    // const emailSubmit = emailRef.current?emailRef.current.value: defaultEmail
+    // const passSubmit = passRef.current? passRef.current.value: 'No'
+
+    // db.collection('userSchedule').add({
+    //     noticeDate: dateSubmit,
+    //     problemId: parseInt(pId),
+    //     email: emailSubmit
+    //     })
+    // for(let i=0; i<pTypes.length; i++){
+    //     db.collection('userSchedule').add({
+    //     noticeDate: today,
+    //     problemId: parseInt(pId),
+    //     email: emailSubmit
+    //     })}
+
+
+    }
       
   async function handleChangeDate(e){
   
@@ -79,6 +101,7 @@ function UserSchedule(fromParent) {
   useEffect(()=>{
       
       },[showCustomDate])
+
   return (
     <div>
     <form onSubmit={handleSubmit}>
@@ -106,12 +129,20 @@ function UserSchedule(fromParent) {
      </div>:''}
 
      <div>Problem Selected: {pTitle} </div>
+     <div> Problem Type: {typeDisplay.toString(',')}</div>
+
+     <label>Technique Used:</label>
+         <select as="select" ref={passRef} single>    
+             {techniqueDisplay.map(e=><option>{e}</option>)}
+             <option>Others</option>
+     </select>  
 
      <label>Pass this problem:</label>
          <select as="select" ref={passRef} single>
              <option>Yes</option>
              <option>No</option>
      </select>  
+
        <button type="submit">
          Create</button>
        </form>
