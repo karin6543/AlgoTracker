@@ -6,11 +6,12 @@ import {pMap} from "./ProblemMap"
 function UserSchedule(fromParent) {
   
   const defaultNumDay = 3
-  const defaultEmail = 'iris.shi@gmail.com'
+  const defaultEmail = 'xmiris.shi@gmail.com'
 
   const dateRef = useRef()
   const emailRef = useRef()
   const passRef = useRef()
+  const techRef = useRef()
 
   const [showCustomDate, setShowCustomDate] = useState(false)
   const [showCustomEmail, setShowCustomEmail] = useState(false)
@@ -34,40 +35,43 @@ function UserSchedule(fromParent) {
           if(val === 'technique'){
               techniqueDisplay.push(key)
           }
-          else{
-              typeDisplay.push(key)
+          else if(val === 'ds'){
+              dsDisplay.push(key)
           }
+          else{
+            typeDisplay.push(key)
+        }
       }
   }
 
   async function handleSubmit(e) {
       
     e.preventDefault()
+    console.log('from parent', fromParent)
+    const today = new Date()
+    today.setDate(today.getDate() + defaultNumDay)
+    let dd = today.getDate();
+    let mm = today.getMonth() + 1;
+    let y = today.getFullYear();
+    let formattedDate = y + '-'+ mm + '-'+ dd;
+    let formattedDate2 = y + '/'+ mm + '/'+ dd;
 
-    // const today = new Date()
-    // today.setDate(today.getDate() + defaultNumDay)
-    // let dd = today.getDate();
-    // let mm = today.getMonth() + 1;
-    // let y = today.getFullYear();
-    // let formattedDate = y + '-'+ mm + '-'+ dd;
+    const dateSubmit = dateRef.current?dateRef.current.value:formattedDate; 
+    const emailSubmit = emailRef.current?emailRef.current.value: defaultEmail
+    const passSubmit = passRef.current? passRef.current.value: 'No'
 
-    // const dateSubmit = dateRef.current?dateRef.current.value:formattedDate; 
-    // const emailSubmit = emailRef.current?emailRef.current.value: defaultEmail
-    // const passSubmit = passRef.current? passRef.current.value: 'No'
-
-    // db.collection('userSchedule').add({
-    //     noticeDate: dateSubmit,
-    //     problemId: parseInt(pId),
-    //     email: emailSubmit
-    //     })
-    // for(let i=0; i<pTypes.length; i++){
-    //     db.collection('userSchedule').add({
-    //     noticeDate: today,
-    //     problemId: parseInt(pId),
-    //     email: emailSubmit
-    //     })}
-
-
+    db.collection('userSchedule').add({
+        noticeDate: dateSubmit,
+        problemId: parseInt(pId),
+        email: emailSubmit
+        })
+    for(let i = 0; i<dsDisplay.length;i++){
+        db.collection('tracker').add({
+            date: formattedDate2,
+            pass: passRef.current.value === "Yes"?true:false,
+            qType: dsDisplay[i],
+            qTechnique: techRef.current.value,
+            userId: emailSubmit})}
     }
       
   async function handleChangeDate(e){
@@ -129,10 +133,11 @@ function UserSchedule(fromParent) {
      </div>:''}
 
      <div>Problem Selected: {pTitle} </div>
-     <div> Problem Type: {typeDisplay.toString(',')}</div>
+     <div> Data Structure: {dsDisplay.toString(',')}</div>
+     <div> Type: {typeDisplay.toString(',')}</div>
 
      <label>Technique Used:</label>
-         <select as="select" ref={passRef} single>    
+         <select as="select" ref={techRef} single>    
              {techniqueDisplay.map(e=><option>{e}</option>)}
              <option>Others</option>
      </select>  

@@ -26,7 +26,6 @@ function NewRecord() {
       'Tree':true}
 
     useEffect(()=>{
-      console.log('')
     },[])
     
     async function handleSubmit(e) {

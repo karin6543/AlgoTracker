@@ -8,7 +8,6 @@ import * as d3 from "d3";
 function Chart() {
     const { logout, userData } = useAuth()
     useEffect(()=>{
-      console.log('CHART activate')
       if(userData){
         let data = userData
         let rows = []
@@ -326,7 +325,6 @@ function Chart() {
                     .attr("y", 14)    // +20 to adjust position (lower)
       }
       else{
-        console.log('no')
       }
     },[userData])
 

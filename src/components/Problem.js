@@ -3,7 +3,6 @@ import React from 'react'
 function Problem(props) {
     
     let {title, difficulty, url, type, rate} = props
-    // console.log([title, difficulty, url, type, rate])
 
     return (
         <div>

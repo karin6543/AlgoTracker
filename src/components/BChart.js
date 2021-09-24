@@ -218,10 +218,10 @@ const leetcode_data =
 function BChart({diff}) {
     const { currentUser, logout, userData } = useAuth()
     useEffect(()=>{
-        console.log('mock component did update', diff)
+    
         if(userData){
             const data = userData
-            console.log('yep')
+         
             d3.select('#benchmarkContainer').selectAll('svg').remove()
             let filtered = []
         data.forEach((row)=>{
@@ -270,7 +270,6 @@ function BChart({diff}) {
 
   rates['columns'] = uniqueTypes
   // rates ready
-  console.log('give me al the rates', rates)
 
   var margin = {top: 10, right: 30, bottom: 20, left: 50},
   width = 1000,

@@ -15,8 +15,6 @@ function Benchmark() {
   }
   async function handleSubmit(e) {
     e.preventDefault()
-   
-    console.log(difficultyRef.current.value)
   }
 
   function handleChange(e){

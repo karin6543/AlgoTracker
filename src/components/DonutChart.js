@@ -33,7 +33,6 @@ function DonutChart() {
               color: '#f8b70a'
             })
           })
-          console.log('donut data', donutData)
             // set the dimensions and margins of the graph
         const width = 700
         const height = 450
@@ -59,7 +58,6 @@ function DonutChart() {
         const pie = d3.pie()
         .sort(null) // Do not sort group by size
         .value(function(d) {
-            console.log('values..',d[1])
             return d[1]; })
         var data_ready = pie(Object.entries(donutCounter))
     

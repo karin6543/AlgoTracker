@@ -28,19 +28,16 @@ function Problems() {
     const { currentUser, logout, userData, lcProblems } = useAuth()
 
     const onClickProb = (e) =>{
-        e.preventDefault()
-       
+    
         setId({'id':e.target.id, 
         'title':e.target.title,
         'type':e.target.name})
     }
     
-
     useEffect(()=>{
         if(lcProblems){
             let temp = []
             let {problems, difficulty, ids, urls, rates, types} = lcProblems
-            // console.log(problems)
             if(problems){
                 for(let i=0;i<problems.length;i++){
                     temp.push({'id':ids[i],'title':problems[i],'difficulty': difficulty[i], 'url': urls[i], 'type': types[i], 'rate': rates[i]})
@@ -112,6 +109,7 @@ function Problems() {
     const endIndex = numPerPage*currentPage
     const startIndex = endIndex - numPerPage
     const problemDisplay = filteredArr.length>0? filteredArr.slice(startIndex, endIndex): []
+ 
     return (
         <div>
             <div>Filteres: {}</div> 
@@ -124,7 +122,7 @@ function Problems() {
                     
                     <label>By difficulty</label>
                         <select as="select" ref={diffRef} multiple>
-                            <option selected="selected">-</option>
+                            <option defaultValue="selected">-</option>
                             <option>Easy</option>
                             <option>Medium</option>
                             <option>Hard</option>
@@ -211,7 +209,9 @@ function Problems() {
             <UserSchedule props={selectId}/>
             
            
-            {problemDisplay.length>0? problemDisplay.map(p=> <div ><Problem title={p.title} difficulty={p.difficulty} key={p.id} url={p.url} rate={p.rate} type={p.type}/><button id={p.id} title={p.title} name={p.type} onClick={onClickProb} >Select</button></div>):''}
+            {problemDisplay.length>0? problemDisplay.map(p=> <div key={p.id}>
+            <Problem title={p.title} difficulty={p.difficulty}  url={p.url} rate={p.rate} type={p.type}/>
+            <button id={p.id} title={p.title} name={p.type} onClick={onClickProb} >Select</button></div>):''}
    
            
         </div>)
