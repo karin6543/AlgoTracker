@@ -80,7 +80,7 @@ function Problems() {
          
             filterArr = filterByType(filterArr, typeTerm)
         }
-    
+        setcurrentPage(1)
         setFilterArr(filterArr)
     }
     function fitlerById(a, id){

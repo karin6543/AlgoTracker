@@ -34,9 +34,11 @@ https://algo-tracker-dev.web.app
 
 - 9/18 ~ 9/23 
 - [x] 搜索by id
-- [] 定时运行email function
-- [] 题目再细分： 增加mapping
-- [] 将当前用户数据替换为API数据
+- [x] 定时运行email function
+- [x] 题目再细分： 增加mapping
+- [x] 修改email
+- [x] 将当前用户数据替换为API数据
+
 - [] ui整理: figma建图
 - [] 修复routing
 - [] css
