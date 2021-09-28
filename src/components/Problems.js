@@ -28,10 +28,11 @@ function Problems() {
     const { currentUser, logout, userData, lcProblems } = useAuth()
 
     const onClickProb = (e) =>{
-    
+        
         setId({'id':e.target.id, 
         'title':e.target.title,
-        'type':e.target.name})
+        'type':e.target.name,
+        'difficulty':e.target.value})
     }
     
     useEffect(()=>{
@@ -51,6 +52,7 @@ function Problems() {
     }, [lcProblems])
 
     function handleChange(e){
+        
         const searchId = idRef.current.value
         const searchTerm = keywordRef.current.value
         const diffTerm = diffRef.current.value 
@@ -211,7 +213,7 @@ function Problems() {
            
             {problemDisplay.length>0? problemDisplay.map(p=> <div key={p.id}>
             <Problem title={p.title} difficulty={p.difficulty}  url={p.url} rate={p.rate} type={p.type}/>
-            <button id={p.id} title={p.title} name={p.type} onClick={onClickProb} >Select</button></div>):''}
+            <button id={p.id} title={p.title} name={p.type} value={p.difficulty} onClick={onClickProb} >Select</button></div>):''}
    
            
         </div>)

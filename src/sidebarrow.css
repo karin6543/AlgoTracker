@@ -1,0 +1,13 @@
+.sidebarRow {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.sidebar__accountCirlce {
+
+    align-items: center;
+    padding: 50px;
+    cursor: pointer;
+}

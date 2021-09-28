@@ -12,9 +12,11 @@ import PrivateRoute from "./PrivateRoute"
 import { AuthProvider } from "../contexts/AuthContext"
 import { Button, Container } from '../GlobalStyles';
 import NavBar from './NavBar'
-
+import Problems from './Problems'
+import Header from "./Header"
+import SideBar from "./SideBar"
 export const NavLink = styled(Link)`
-  color: #808080;
+
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -68,11 +70,14 @@ export default function Dashboard() {
   return (
     <>
     <Router>
+      <Header />
       <NavBar />
+      <SideBar />
       <AuthProvider>
     
             <Switch> 
               <PrivateRoute exact path="/" component={NewRecord} />
+              <PrivateRoute exact path="/UserPractice" component={Problems} />
               <PrivateRoute exact path="/newRecord" component={NewRecord} />
               <PrivateRoute exact path="/analyzeError" component={ErrorAnalysis} />
               <PrivateRoute exact path="/benchmark" component={Benchmark} />

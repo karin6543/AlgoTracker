@@ -70,14 +70,6 @@ export function AuthProvider({ children }) {
           console.log(err.message)
           })
 
-      //   db.collection('problems').onSnapshot(snapshot => {
-      
-      //     setProblems(snapshot.docs)
-        
-      // },(err) => {
-      //     console.log(err.message)
-      //     })
-
       }
    
       else{

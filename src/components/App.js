@@ -1,4 +1,5 @@
 import React from "react"
+import Header from "./Header"
 import Signup from "./Signup"
 import { AuthProvider } from "../contexts/AuthContext"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
@@ -21,19 +22,15 @@ import Problems from './Problems'
 function App() {
   return (
 
-    <Container
-      className="d-flex align-items-center justify-content-center"
-      style={{ minHeight: "100vh" }}
-    >
+   
       <div >
         <Router>
      
           <AuthProvider>
-    
+            
             <Switch> 
               <PrivateRoute exact path="/" component={Dashboard} />
               <PrivateRoute path="/UserPractice" component={Problems} />
-              <PrivateRoute path="/UserSchedule" component={UserSchedule} />
               <PrivateRoute exact path="/newRecord" component={NewRecord} />
               <PrivateRoute exact path="/analyzeError" component={ErrorAnalysis} />
               <PrivateRoute exact path="/benchmark" component={Benchmark} />
@@ -48,7 +45,7 @@ function App() {
           </AuthProvider>
         </Router>
       </div>
-    </Container>
+
    
   )
 }

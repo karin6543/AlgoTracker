@@ -1,21 +1,6 @@
 # :bar_chart: Algo Tracker v1.5
 https://algo-tracker-dev.web.app
 
-## Upcoming Features
-功能1. 查看实时lc题目列表 (只能使用selenium爬，Not worth it)
-- 新增collections: User, UserPractice, ProblemSchedule, Problems
-- Google cloud function进行lc爬虫，更新数据库
-- 每周一次按tag爬虫，不需要login
-
-功能2. 训练记录与邮件提醒
-- 为用户设定训练记录页面
-- 允许用户将题目加入提醒scheduler，并设置频率
-- 例：将word search设为2天后回顾，并收到提醒
-- 用户登录后如当天有需要回顾的题目，会收到pop-up notification
-
-功能3. 更精细，合理的题目类型&技巧分类
-- 细分数据结构与算法解题技巧
-- 减少重复的定义
 
 ## Project Timeline
 - 9/15: 
@@ -39,8 +24,9 @@ https://algo-tracker-dev.web.app
 - [x] 修改email
 - [x] 将当前用户数据替换为API数据
 
-- [] ui整理: figma建图
+- [] create新记录时的difficulty问题
 - [] 修复routing
+- [] ui整理: figma建图
 - [] css
 
 

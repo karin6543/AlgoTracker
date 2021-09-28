@@ -60,7 +60,7 @@ export default function Login() {
 }
 const FormContainer = styled.div`
   border-radius: 5px;
-  background-color:#fcbf49;
+
   justify-content: center;
   margin: 50px auto;
   padding: 20px;

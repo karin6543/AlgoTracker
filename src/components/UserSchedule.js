@@ -20,15 +20,18 @@ function UserSchedule(fromParent) {
   let pId = null
   let pTitle = null
   let pTypes = []
+  let pDiff = null
   let dsDisplay = []
   let techniqueDisplay = []
   let typeDisplay = []
 
   if(fromParent.props){
+      
       pId = fromParent.props.id
       pTitle = fromParent.props.title
       pTypes = fromParent.props.type.replaceAll("'",'').replaceAll(' ','').replace('[', '').replace(']', '').split(',')
-    
+      pDiff = fromParent.props.difficulty
+
       for(let i = 0; i<pTypes.length; i++){
           const key = pTypes[i]
           const val = pMap[key.toLowerCase()]
@@ -47,7 +50,7 @@ function UserSchedule(fromParent) {
   async function handleSubmit(e) {
       
     e.preventDefault()
-    console.log('from parent', fromParent)
+    
     const today = new Date()
     today.setDate(today.getDate() + defaultNumDay)
     let dd = today.getDate();
@@ -59,6 +62,7 @@ function UserSchedule(fromParent) {
     const dateSubmit = dateRef.current?dateRef.current.value:formattedDate; 
     const emailSubmit = emailRef.current?emailRef.current.value: defaultEmail
     const passSubmit = passRef.current? passRef.current.value: 'No'
+    
 
     db.collection('userSchedule').add({
         noticeDate: dateSubmit,
@@ -67,11 +71,12 @@ function UserSchedule(fromParent) {
         })
     for(let i = 0; i<dsDisplay.length;i++){
         db.collection('tracker').add({
-            date: formattedDate2,
+            date: formattedDate2 ,
             pass: passRef.current.value === "Yes"?true:false,
             qType: dsDisplay[i],
             qTechnique: techRef.current.value,
-            userId: emailSubmit})}
+            userId: emailSubmit,
+            qDiff: pDiff})}
     }
       
   async function handleChangeDate(e){
