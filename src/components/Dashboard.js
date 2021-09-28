@@ -15,6 +15,7 @@ import NavBar from './NavBar'
 import Problems from './Problems'
 import Header from "./Header"
 import SideBar from "./SideBar"
+import '../dashboard.css'
 export const NavLink = styled(Link)`
 
   display: flex;
@@ -71,10 +72,10 @@ export default function Dashboard() {
     <>
     <Router>
       <Header />
-      <NavBar />
-      <SideBar />
-      <AuthProvider>
-    
+      <div className="dbContainer">
+          {/* <NavBar /> */}
+          <SideBar />
+          <AuthProvider>
             <Switch> 
               <PrivateRoute exact path="/" component={NewRecord} />
               <PrivateRoute exact path="/UserPractice" component={Problems} />
@@ -84,6 +85,8 @@ export default function Dashboard() {
               <PrivateRoute path="/update-profile" component={UpdateProfile} />
             </Switch>
           </AuthProvider>
+      </div>
+      
 
           </Router>
       </>

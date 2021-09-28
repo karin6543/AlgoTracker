@@ -4,6 +4,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AddchartIcon from '@mui/icons-material/Addchart';
 import HistoryIcon from '@mui/icons-material/History';
 import SettingsIcon from '@mui/icons-material/Settings';
+import "../sidebarrow.css"
 
 function SideBar() {
     return (
@@ -11,7 +12,6 @@ function SideBar() {
             <div className='sidebar__accountCirlce'>
                 <AccountCircleIcon />
             </div>
-            
             <SidebarRow Icon={AddchartIcon} title='performance'/>
             <SidebarRow Icon={HistoryIcon} title='history'/>  
             <SidebarRow Icon={SettingsIcon} title='setting'/>            
