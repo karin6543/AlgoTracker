@@ -16,6 +16,7 @@ import Problems from './Problems'
 import Header from "./Header"
 import SideBar from "./SideBar"
 import '../dashboard.css'
+import '../sidebarrow.css'
 export const NavLink = styled(Link)`
 
   display: flex;

@@ -10,8 +10,10 @@
     align-items: center;
     padding: 50px;
     cursor: pointer;
+    
 }
 
 .sidebar {
-    align-items: flex-start;
+    margin-top: 0px;
+    background-color: wheat;
 }

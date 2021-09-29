@@ -7,7 +7,8 @@ function SidebarRow({src, Icon, title}) {
         <div className='sidebarRow'>
             {src && <AccountCircleIcon src={src}/>}
             {Icon && <Icon />}
-            <h4>{title}</h4>
+            <span>{"_"}</span>
+            <span> <h4>{title}</h4>  </span>
         </div>
     )
 }
