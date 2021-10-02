@@ -3,6 +3,7 @@
     align-items: center;
     padding: 20px;
     cursor: pointer;
+    font-weight: 800;
 }
 
 .sidebar__accountCirlce {
@@ -16,4 +17,11 @@
 .sidebar {
     margin-top: 0px;
     background-color: wheat;
+    position:sticky;
+    z-index: 50;
+    font-weight: 00;
+}
+
+.sidebarRow:hover {
+    background-color: lightyellow;
 }

@@ -1,5 +1,4 @@
 import React, { useState , PropTypes} from "react"
-// import { Button, Navbar } from "react-bootstrap"
 import { FaBars } from 'react-icons/fa';
 import { useAuth } from "../contexts/AuthContext"
 import { NavLink as Link, useHistory, Switch , BrowserRouter as Router} from "react-router-dom"
@@ -15,8 +14,12 @@ import NavBar from './NavBar'
 import Problems from './Problems'
 import Header from "./Header"
 import SideBar from "./SideBar"
+import PageNav from "./PageNav"
+
 import '../dashboard.css'
 import '../sidebarrow.css'
+import "../header.css"
+
 export const NavLink = styled(Link)`
 
   display: flex;
@@ -76,16 +79,20 @@ export default function Dashboard() {
       <div className="dbContainer">
           {/* <NavBar /> */}
           <SideBar />
-          <AuthProvider>
-            <Switch> 
-              <PrivateRoute exact path="/" component={NewRecord} />
-              <PrivateRoute exact path="/UserPractice" component={Problems} />
-              <PrivateRoute exact path="/newRecord" component={NewRecord} />
-              <PrivateRoute exact path="/analyzeError" component={ErrorAnalysis} />
-              <PrivateRoute exact path="/benchmark" component={Benchmark} />
-              <PrivateRoute path="/update-profile" component={UpdateProfile} />
-            </Switch>
-          </AuthProvider>
+          <div className='page_nav'>
+          <PageNav />
+            <AuthProvider>
+              <Switch> 
+                <PrivateRoute exact path="/" component={Problems} />
+                <PrivateRoute exact path="/UserPractice" component={Problems} />
+                <PrivateRoute exact path="/newRecord" component={NewRecord} />
+                <PrivateRoute exact path="/error" component={ErrorAnalysis} />
+                <PrivateRoute exact path="/benchmark" component={Benchmark} />
+                <PrivateRoute path="/update-profile" component={UpdateProfile} />
+              </Switch>
+            </AuthProvider>
+          </div>
+          
       </div>
       
 

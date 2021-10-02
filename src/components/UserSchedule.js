@@ -2,6 +2,10 @@ import React, { useRef, useState, useEffect } from 'react'
 import { useAuth } from "../contexts/AuthContext"
 import { db } from "../firebase"
 import {pMap} from "./ProblemMap"
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import SendIcon from '@mui/icons-material/Send';
+import Stack from '@mui/material/Stack';
 
 function UserSchedule(fromParent) {
   
@@ -140,21 +144,23 @@ function UserSchedule(fromParent) {
      <div>Problem Selected: {pTitle} </div>
      <div> Data Structure: {dsDisplay.toString(',')}</div>
      <div> Type: {typeDisplay.toString(',')}</div>
-
+     <div>
      <label>Technique Used:</label>
          <select as="select" ref={techRef} single>    
              {techniqueDisplay.map(e=><option>{e}</option>)}
              <option>Others</option>
      </select>  
-
+     </div>
+     <div>
      <label>Pass this problem:</label>
          <select as="select" ref={passRef} single>
              <option>Yes</option>
              <option>No</option>
      </select>  
-
-       <button type="submit">
-         Create</button>
+     </div>
+       <Button variant="contained" endIcon={<SendIcon />} type="submit">
+         Create
+        </Button>
        </form>
  </div>)}
 

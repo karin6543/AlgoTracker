@@ -3,31 +3,11 @@ https://algo-tracker-dev.web.app
 
 
 ## Project Timeline
-- 9/15: 
-- [x] 修改 fetch problems 顺序: 登录即fetch
-- [x] 增加类似购物车checkout component,将题目添加到practice problem, schedule collection
-
-
-- 9/16:
-- [x] 调整cart UI: 将题目显示在cart内， 增加 pass/fail 
-- [x] 能否在cloud function内access firebase数据
-
-- 9/17:
-- [x] 找到能够发canlendar invite的api
-- [x] 完成schedule invite逻辑
-- [x] 整理当前进度
-
-- 9/18 ~ 9/23 
-- [x] 搜索by id
-- [x] 定时运行email function
-- [x] 题目再细分： 增加mapping
-- [x] 修改email
-- [x] 将当前用户数据替换为API数据
-
-- [] create新记录时的difficulty问题
-- [] 修复routing
-- [] ui整理: figma建图
-- [] css
+9/29
+- []create record和problems排版
+- []3个tab连去不同页面
+- []pagination调整一下
+- []总结剩余css任务
 
 
 

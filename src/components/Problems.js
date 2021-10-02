@@ -4,6 +4,18 @@ import Problem from './Problem'
 import UserSchedule from './UserSchedule'
 import { useAuth } from "../contexts/AuthContext"
 import Pagination from './Pagination'
+import Chart from "./Chart"
+import "../header.css"
+import SearchIcon from '@mui/icons-material/Add'; 
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import SendIcon from '@mui/icons-material/Send';
+import Stack from '@mui/material/Stack';
+import AddIcon from '@mui/icons-material/Add';
+import Chip from '@mui/material/Chip';
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
+
 
 function Problems() {
     
@@ -111,94 +123,167 @@ function Problems() {
     const endIndex = numPerPage*currentPage
     const startIndex = endIndex - numPerPage
     const problemDisplay = filteredArr.length>0? filteredArr.slice(startIndex, endIndex): []
- 
+
     return (
-        <div>
-            <div>Filteres: {}</div> 
-            <form>
+        
+        <div>{problemDisplay.length>0 ? 
+        <Stack spacing={3} sx={{ width: 500 }}>
+            <Autocomplete
+                multiple
+                id="tags-standard"
+                options={[]}
+                getOptionLabel={(option) => ''}
+                defaultValue={[problemDisplay[13]]}
+                renderInput={(params) => (
+                <TextField
+                    {...params}
+                    variant="standard"
+                    label="Multiple values"
+                    placeholder="Favorites"
+                />
+                )}/>
+            <Autocomplete
+                multiple
+                id="tags-outlined"
+                options={problemDisplay}
+                getOptionLabel={(option) => ''}
+                defaultValue={['']}
+                filterSelectedOptions
+                renderInput={(params) => (
+                <TextField
+                    {...params}
+                    label="filterSelectedOptions"
+                    placeholder="Favorites"
+                />
+                )}
+            />
+        <Autocomplete
+            multiple
+            id="tags-filled"
+            options={problemDisplay.map((option) => option.title)}
+            defaultValue={['']}
+            freeSolo
+            renderTags={(value, getTagProps) =>
+            value.map((option, index) => (
+                <Chip variant="outlined" label={option} {...getTagProps({ index })} />
+            ))
+            }
+            renderInput={(params) => (
+            <TextField
+                {...params}
+                variant="filled"
+                label="freeSolo"
+                placeholder="Favorites"
+            />
+            )}
+        />
+        </Stack>:''}
+            
+            {userData? <div className="main_chart"><Chart/> </div>: <h4>Add Your First Practice Data !</h4>}
+            
+            <div >Filteres: {}</div> 
+            <form > 
                 <div onChange={handleChange}>
-                    <label>By ID</label>
-                    <input ref={idRef}></input>
-                    <label>By Keyword</label>
-                    <input ref={keywordRef}></input>
                     
-                    <label>By difficulty</label>
+                    <div className="filters">
+                    <span>
+                        <input ref={idRef} placeholder="By ID"></input>
+                    </span>
+                    <span>
+                        <input ref={keywordRef} placeholder="By Keyword"></input>
+                    </span>
+                    
+                    <span>
                         <select as="select" ref={diffRef} multiple>
                             <option defaultValue="selected">-</option>
                             <option>Easy</option>
                             <option>Medium</option>
                             <option>Hard</option>
-                    </select>
-                    <label>By Type</label>
-                        <select as="select" ref={typeRef} multiple>
-                        <option selected="selected">-</option>
-                        <option> Array </option>
-                        <option> Backtracking </option>
-                        <option> Binary-Indexed-Tree </option>
-                        <option> Binary-Search </option>
-                        <option> Binary-Search-Tree </option>
-                        <option> Binary-Tree </option>
-                        <option> Bit-Manipulation </option>
-                        <option> Brainteaser </option>
-                        <option> Breadth-First-Search </option>
-                        <option> Bucket-Sort </option>
-                        <option> Combinatorics </option>
-                        <option> Concurrency </option>
-                        <option> Counting </option>
-                        <option> Counting-Sort </option>
-                        <option> Data-Stream </option>
-                        <option> Depth-First-Search </option>
-                        <option> Design </option>
-                        <option> Divide-and-Conquer </option>
-                        <option> Doubly-Linked-List </option>
-                        <option> Dynamic-Programming </option>
-                        <option> Enumeration </option>
-                        <option> Game-Theory </option>
-                        <option> Geometry </option>
-                        <option> Graph </option>
-                        <option> Greedy </option>
-                        <option> Hash-Function </option>
-                        <option> Hash-Table </option>
-                        <option> Heap-Priority-Queue </option>
-                        <option> Interactive </option>
-                        <option> Iterator </option>
-                        <option> Linked-List </option>
-                        <option> Math </option>
-                        <option> Matrix </option>
-                        <option> Memoization </option>
-                        <option> Merge-Sort </option>
-                        <option> Minimum-Spanning-Tree </option>
-                        <option> Monotonic-Queue </option>
-                        <option> Monotonic-Stack </option>
-                        <option> Number-Theory </option>
-                        <option> Ordered-Set </option>
-                        <option> Prefix-Sum </option>
-                        <option> Probability-and-Statistics </option>
-                        <option> Queue </option>
-                        <option> Quickselect </option>
-                        <option> Randomized </option>
-                        <option> Recursion </option>
-                        <option> Rolling-Hash </option>
-                        <option> Shortest-Path </option>
-                        <option> Simulation </option>
-                        <option> Sliding-Window </option>
-                        <option> Sorting </option>
-                        <option> Stack </option>
-                        <option> String </option>
-                        <option> String-Matching </option>
-                        <option> Strongly-Connected-Component </option>
-                        <option> Suffix-Array </option>
-                        <option> Topological-Sort </option>
-                        <option> Tree </option>
-                        <option> Trie </option>
-                        <option> Two-Pointers </option>
-                        <option> Union-Find </option>
-                    </select>
+                        </select>
+                    </span>
+                    <span>
+                    <select as="select" ref={typeRef} multiple>
+                            <option selected="selected">-</option>
+                            <option> Array </option>
+                            <option> Backtracking </option>
+                            <option> Binary-Indexed-Tree </option>
+                            <option> Binary-Search </option>
+                            <option> Binary-Search-Tree </option>
+                            <option> Binary-Tree </option>
+                            <option> Bit-Manipulation </option>
+                            <option> Brainteaser </option>
+                            <option> Breadth-First-Search </option>
+                            <option> Bucket-Sort </option>
+                            <option> Combinatorics </option>
+                            <option> Concurrency </option>
+                            <option> Counting </option>
+                            <option> Counting-Sort </option>
+                            <option> Data-Stream </option>
+                            <option> Depth-First-Search </option>
+                            <option> Design </option>
+                            <option> Divide-and-Conquer </option>
+                            <option> Doubly-Linked-List </option>
+                            <option> Dynamic-Programming </option>
+                            <option> Enumeration </option>
+                            <option> Game-Theory </option>
+                            <option> Geometry </option>
+                            <option> Graph </option>
+                            <option> Greedy </option>
+                            <option> Hash-Function </option>
+                            <option> Hash-Table </option>
+                            <option> Heap-Priority-Queue </option>
+                            <option> Interactive </option>
+                            <option> Iterator </option>
+                            <option> Linked-List </option>
+                            <option> Math </option>
+                            <option> Matrix </option>
+                            <option> Memoization </option>
+                            <option> Merge-Sort </option>
+                            <option> Minimum-Spanning-Tree </option>
+                            <option> Monotonic-Queue </option>
+                            <option> Monotonic-Stack </option>
+                            <option> Number-Theory </option>
+                            <option> Ordered-Set </option>
+                            <option> Prefix-Sum </option>
+                            <option> Probability-and-Statistics </option>
+                            <option> Queue </option>
+                            <option> Quickselect </option>
+                            <option> Randomized </option>
+                            <option> Recursion </option>
+                            <option> Rolling-Hash </option>
+                            <option> Shortest-Path </option>
+                            <option> Simulation </option>
+                            <option> Sliding-Window </option>
+                            <option> Sorting </option>
+                            <option> Stack </option>
+                            <option> String </option>
+                            <option> String-Matching </option>
+                            <option> Strongly-Connected-Component </option>
+                            <option> Suffix-Array </option>
+                            <option> Topological-Sort </option>
+                            <option> Tree </option>
+                            <option> Trie </option>
+                            <option> Two-Pointers </option>
+                            <option> Union-Find </option>
+                        </select>
+                    </span>
+                    <Button variant="contained" endIcon={<AddIcon />}>Create</Button>
+                    </div>
                 </div>
-                <button type="submit">
-               Create</button>
+              
             </form>
-            <div onChange={handleNum}>
+           
+           
+            <div className="select_problem">
+                <UserSchedule props={selectId}/>
+                <div className="problems">
+                    {problemDisplay.length>0? problemDisplay.map(p=> <div key={p.id}>
+                    <Problem title={p.title} difficulty={p.difficulty}  url={p.url} rate={p.rate} type={p.type}/>
+                    <button id={p.id} title={p.title} name={p.type} value={p.difficulty} onClick={onClickProb} >Select</button></div>):''}
+                </div>
+            </div>
+            <Pagination probPerpage={numPerPage} totalNum={filteredArr.length} paginate={paginate} />
+                <div onChange={handleNum}>
                 <label>Num of problems</label>
                     <select as="select" ref={numRef} single>
                         <option selected="selected">10</option>
@@ -207,14 +292,8 @@ function Problems() {
                         <option >100</option>
                     </select>
             </div>
-            <Pagination probPerpage={numPerPage} totalNum={filteredArr.length} paginate={paginate} />
-            <UserSchedule props={selectId}/>
             
-           
-            {problemDisplay.length>0? problemDisplay.map(p=> <div key={p.id}>
-            <Problem title={p.title} difficulty={p.difficulty}  url={p.url} rate={p.rate} type={p.type}/>
-            <button id={p.id} title={p.title} name={p.type} value={p.difficulty} onClick={onClickProb} >Select</button></div>):''}
-   
+            
            
         </div>)
     
