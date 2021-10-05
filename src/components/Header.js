@@ -1,9 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../header.css"
 import LogoutIcon from '@mui/icons-material/Logout';
 import AddIcon from '@mui/icons-material/Add';
-
+import { NavLink as Link, useHistory, Switch , BrowserRouter as Router} from "react-router-dom"
+import { useAuth } from "../contexts/AuthContext"
 function Header() {
+    const [error, setError] = useState("")
+    const history = useHistory()
+    const { currentUser, logout, userData } = useAuth()
+    async function handleLogOut() {
+        setError("")
+    
+        try {
+          await logout()
+          history.push("/login")
+        } catch {
+          setError("Failed to log out")
+        }
+      }
     return (
         <div className="header">
             <div className="header__left">
@@ -11,11 +25,11 @@ function Header() {
             </div>
         
             <div className="header__right">
-                <div className="header__addicon"> 
+                <Link to='/'><div className="header__addicon"> 
                     <AddIcon />
-                </div>
+                </div></Link>
                 <div className="header__logouticon"> 
-                    <LogoutIcon />
+                <LogoutIcon onClick={handleLogOut}/>
                 </div>
             </div>
      

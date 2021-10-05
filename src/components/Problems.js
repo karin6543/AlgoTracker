@@ -3,7 +3,7 @@ import React, { Component, useRef, useState, useEffect } from 'react'
 import Problem from './Problem'
 import UserSchedule from './UserSchedule'
 import { useAuth } from "../contexts/AuthContext"
-import Pagination from './Pagination'
+import BasicPagination from './BasicPagination'
 import Chart from "./Chart"
 import "../header.css"
 import SearchIcon from '@mui/icons-material/Add'; 
@@ -15,8 +15,30 @@ import AddIcon from '@mui/icons-material/Add';
 import Chip from '@mui/material/Chip';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import Input from '@mui/material/Input';
+import Pagination from '@mui/material/Pagination';
+import { DataGrid } from '@mui/x-data-grid';
+
+import {columns, arrayType} from './ProblemMap'
 
 
+const rows = [
+    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
+    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
+    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
+    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
+    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
+    { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
+    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
+    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
+    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+  ];
+  
 function Problems() {
     
     let [arr, setArr] = useState([])
@@ -24,12 +46,15 @@ function Problems() {
     let [selectId, setId] = useState()
     let [filteredArr, setFilterArr] = useState([])
 
+    const a = [{'title':'happy'}, {'title':'ending'}]
     const [keywordFilter, setKeywordFilter] = useState([])
     const [diffFilter, setdiffFilter] = useState([])
     const [typeFilter, setTypeFilter] = useState([])
     const [numPerPage, setnumPerPage] = useState(10)
     const [currentPage, setcurrentPage] = useState(1)
+    const [selectionModel, setSelectionModel] = useState([])
 
+    console.log('model: ', selectionModel)
     const idRef = useRef()
     const keywordRef = useRef()
     const diffRef = useRef()
@@ -41,12 +66,21 @@ function Problems() {
 
     const onClickProb = (e) =>{
         
+        console.log('here...', e)
         setId({'id':e.target.id, 
         'title':e.target.title,
         'type':e.target.name,
         'difficulty':e.target.value})
     }
     
+    const handleSelect = (e)=>{
+        const selected = filteredArr[e[0]]
+        setId({'id':selected.id, 
+        'title':selected.title,
+        'type':selected.type,
+        'difficulty':selected.difficulty})
+
+    }
     useEffect(()=>{
         if(lcProblems){
             let temp = []
@@ -119,6 +153,11 @@ function Problems() {
     function paginate(num){
         setcurrentPage(num)
     }
+    function handleSubmit(e){
+        e.preventDefault()
+        console.log(e.target.textContent.replace('submit','').split('*'))
+    }
+    
 
     const endIndex = numPerPage*currentPage
     const startIndex = endIndex - numPerPage
@@ -126,58 +165,8 @@ function Problems() {
 
     return (
         
-        <div>{problemDisplay.length>0 ? 
-        <Stack spacing={3} sx={{ width: 500 }}>
-            <Autocomplete
-                multiple
-                id="tags-standard"
-                options={[]}
-                getOptionLabel={(option) => ''}
-                defaultValue={[problemDisplay[13]]}
-                renderInput={(params) => (
-                <TextField
-                    {...params}
-                    variant="standard"
-                    label="Multiple values"
-                    placeholder="Favorites"
-                />
-                )}/>
-            <Autocomplete
-                multiple
-                id="tags-outlined"
-                options={problemDisplay}
-                getOptionLabel={(option) => ''}
-                defaultValue={['']}
-                filterSelectedOptions
-                renderInput={(params) => (
-                <TextField
-                    {...params}
-                    label="filterSelectedOptions"
-                    placeholder="Favorites"
-                />
-                )}
-            />
-        <Autocomplete
-            multiple
-            id="tags-filled"
-            options={problemDisplay.map((option) => option.title)}
-            defaultValue={['']}
-            freeSolo
-            renderTags={(value, getTagProps) =>
-            value.map((option, index) => (
-                <Chip variant="outlined" label={option} {...getTagProps({ index })} />
-            ))
-            }
-            renderInput={(params) => (
-            <TextField
-                {...params}
-                variant="filled"
-                label="freeSolo"
-                placeholder="Favorites"
-            />
-            )}
-        />
-        </Stack>:''}
+        <div>
+          
             
             {userData? <div className="main_chart"><Chart/> </div>: <h4>Add Your First Practice Data !</h4>}
             
@@ -267,22 +256,36 @@ function Problems() {
                             <option> Union-Find </option>
                         </select>
                     </span>
+                    
                     <Button variant="contained" endIcon={<AddIcon />}>Create</Button>
                     </div>
                 </div>
               
             </form>
-           
+        
            
             <div className="select_problem">
                 <UserSchedule props={selectId}/>
-                <div className="problems">
+                <div style={{ height: 500, width: '100%' }}>
+                    <DataGrid
+                    rows={filteredArr}
+                    columns={columns}
+                    pageSize={numPerPage}
+                    rowsPerPageOptions={[numPerPage]}
+
+                    onSelectionModelChange={handleSelect}
+                    // disableMultipleSelection={true}
+                    />
+                    </div>
+                {/* <div className="problems">
                     {problemDisplay.length>0? problemDisplay.map(p=> <div key={p.id}>
                     <Problem title={p.title} difficulty={p.difficulty}  url={p.url} rate={p.rate} type={p.type}/>
                     <button id={p.id} title={p.title} name={p.type} value={p.difficulty} onClick={onClickProb} >Select</button></div>):''}
-                </div>
+                </div> */}
             </div>
-            <Pagination probPerpage={numPerPage} totalNum={filteredArr.length} paginate={paginate} />
+            {/* <Pagination count={10} /> */}
+            {/* <Pagination probPerpage={numPerPage} totalNum={filteredArr.length} paginate={paginate} /> */}
+            {/* <BasicPagination probPerpage={numPerPage} totalNum={filteredArr.length} paginate={paginate} /> */}
                 <div onChange={handleNum}>
                 <label>Num of problems</label>
                     <select as="select" ref={numRef} single>

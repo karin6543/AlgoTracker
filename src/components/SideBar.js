@@ -8,6 +8,7 @@ import HistoryIcon from '@mui/icons-material/History';
 import SettingsIcon from '@mui/icons-material/Settings';
 import "../sidebarrow.css"
 import { AuthProvider } from "../contexts/AuthContext"
+import { NavLink as Link, useHistory, Switch , BrowserRouter as Router} from "react-router-dom"
 
 function SideBar() {
     const { currentUser, logout, userData } = useAuth()
@@ -16,9 +17,9 @@ function SideBar() {
             <div className='sidebar__accountCirlce'>
                 <Avatar src={currentUser.photoURL} sx={{ width: 70, height: 70 }}/>
             </div>
-            <SidebarRow Icon={AddchartIcon} title='Performance'/>
-            <SidebarRow Icon={HistoryIcon} title='History'/>  
-            <SidebarRow Icon={SettingsIcon} title='Setting'/>            
+            <Link to='/' style={{ color: "grey"}}><SidebarRow Icon={AddchartIcon} title='Performance'/></Link>
+            <Link to='/history' style={{ color: "grey" }}><SidebarRow Icon={HistoryIcon} title='History'/>  </Link>
+            <Link to='/setting' style={{ color: "grey"}}><SidebarRow Icon={SettingsIcon} title='Setting'/> </Link>           
         </div>
     )
 }

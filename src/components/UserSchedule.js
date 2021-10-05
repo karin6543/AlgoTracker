@@ -6,11 +6,15 @@ import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
 import Stack from '@mui/material/Stack';
+import Select from '@mui/material/Select';
+import Box from '@mui/material/Box';
+import Input from '@mui/material/Input';
 
 function UserSchedule(fromParent) {
   
+  const { currentUser, logout, userData } = useAuth()
   const defaultNumDay = 3
-  const defaultEmail = 'xmiris.shi@gmail.com'
+  const defaultEmail = currentUser.email
 
   const dateRef = useRef()
   const emailRef = useRef()
@@ -52,6 +56,7 @@ function UserSchedule(fromParent) {
   }
 
   async function handleSubmit(e) {
+    console.log('click!')
       
     e.preventDefault()
     
@@ -81,7 +86,9 @@ function UserSchedule(fromParent) {
             qTechnique: techRef.current.value,
             userId: emailSubmit,
             qDiff: pDiff})}
-    }
+    
+      
+        }
       
   async function handleChangeDate(e){
   
