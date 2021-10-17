@@ -3,12 +3,16 @@ https://algo-tracker-dev.web.app
 
 
 ## Project Timeline
-9/29
-- []create record和problems排版
-- []3个tab连去不同页面
-- []pagination调整一下
-- []总结剩余css任务
-
+Continue
+- [] Filter css
+- [] Sidebar css: remove underline
+- [] Top navbar css : more descriptive
+- [] Mid navbar css : rounder shapes
+- [] Error Analysis css : re-allocate spaces, alignment
+- [] Benchmarking: change calculation data, rework on css
+- [] History page
+- [] Setting: default schedule days, email etc
+- [] Click logo return to home page
 
 
 
