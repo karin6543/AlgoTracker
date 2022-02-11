@@ -5,6 +5,7 @@ https://algo-tracker-dev.web.app
 ## Project Timeline
 Continue
 - [] Filter css
+- [] Create new record component
 - [] Sidebar css: remove underline
 - [] Top navbar css : more descriptive
 - [] Mid navbar css : rounder shapes

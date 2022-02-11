@@ -23,7 +23,7 @@ import Select from '@mui/material/Select';
 import Input from '@mui/material/Input';
 import Pagination from '@mui/material/Pagination';
 import { DataGrid } from '@mui/x-data-grid';
-
+import NativeSelect from '@mui/material/NativeSelect';
 import {columns, arrayType} from './ProblemMap'
 
 
@@ -176,10 +176,10 @@ function Problems() {
                     
                     <div className="filters">
                     <span>
-                        <input ref={idRef} placeholder="By ID"></input>
+                        <TextField id="outlined-basic" label="Outlined" variant="outlined"  inputRef={idRef} placeholder="By ID"></TextField>
                     </span>
                     <span>
-                        <input ref={keywordRef} placeholder="By Keyword"></input>
+                        <TextField id="outlined-basic" label="Outlined" variant="outlined"  inputRef={keywordRef} placeholder="By Keyword"></TextField>
                     </span>
                     
                     <span>
@@ -265,7 +265,10 @@ function Problems() {
         
            
             <div className="select_problem">
-                <UserSchedule props={selectId}/>
+                <div>
+                    <UserSchedule props={selectId}/>
+                </div>
+                
                 <div style={{ height: 500, width: '100%' }}>
                     <DataGrid
                     rows={filteredArr}

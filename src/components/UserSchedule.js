@@ -9,6 +9,10 @@ import Stack from '@mui/material/Stack';
 import Select from '@mui/material/Select';
 import Box from '@mui/material/Box';
 import Input from '@mui/material/Input';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import NativeSelect from '@mui/material/NativeSelect';
 
 function UserSchedule(fromParent) {
   
@@ -123,25 +127,51 @@ function UserSchedule(fromParent) {
       },[showCustomDate])
 
   return (
-    <div>
+    <div className='createRecord'>
     <form onSubmit={handleSubmit}>
     
      <div onChange={handleChangeDate}>
-         <label>Notification Schedule</label>
-         <select as="select" single>
-             <option>Use Default</option>
-             <option>Custom Now</option>
-         </select>
+        <Box sx={{ minWidth: 120 }}>
+         <FormControl fullWidth>
+            <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                Notification Schedule
+            </InputLabel>
+            <NativeSelect
+                defaultValue={'Use Default'}
+                inputProps={{
+                name: 'age',
+                id: 'uncontrolled-native',
+                }}
+            >
+                <option>Use Default</option>
+                <option>Custom Now</option>
+         
+            </NativeSelect>
+            </FormControl>
+        </Box>
      </div>
      {showCustomDate?<div> <label>Notification Date</label>
          <input type="date" ref={dateRef} required /></div>:''}
 
      <div onChange={handleChangeEmail}>
-     <label>Send Email Reminder To</label>
-         <select as="select" single>
-             <option>Use Default</option>
-             <option>Custom Now</option>
-     </select>
+
+     <Box sx={{ minWidth: 120 }}>
+         <FormControl fullWidth>
+            <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                Send Email Reminder To
+            </InputLabel>
+            <NativeSelect
+                defaultValue={'Use Default'}
+                inputProps={{
+                name: 'age',
+                id: 'uncontrolled-native',
+                }}>
+                <option>Use Default</option>
+                <option>Custom Now</option>
+         
+            </NativeSelect>
+            </FormControl>
+        </Box>
      </div>
      
      {showCustomEmail?<div> <label>Email</label>
@@ -157,13 +187,15 @@ function UserSchedule(fromParent) {
              {techniqueDisplay.map(e=><option>{e}</option>)}
              <option>Others</option>
      </select>  
+     
      </div>
      <div>
      <label>Pass this problem:</label>
          <select as="select" ref={passRef} single>
              <option>Yes</option>
              <option>No</option>
-     </select>  
+     </select> 
+      
      </div>
        <Button variant="contained" endIcon={<SendIcon />} type="submit">
          Create
